@@ -1,0 +1,80 @@
+{
+  "name": "autocs",
+  "version": "0.1.0",
+  "description": "Eslint && remarklint dependencies",
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "tests"
+  },
+  "private": true,
+  "workspaces": [
+    "ui"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@istanbuljs/nyc-config-babel": "^1.0.1",
+    "@types/node": "^12.20.37",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "babel-plugin-istanbul": "^6.0.0",
+    "babel-register": "^6.26.0",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-plugin-cypress": "^2.11.2",
+    "eslint-plugin-header": "^3.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-no-unsanitized": "^3.0.2",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.4.2",
+    "micromatch": "^4.0.2",
+    "nyc": "^15.1.0",
+    "remark-cli": "^9.0.0",
+    "remark-frontmatter": "^3.0.0",
+    "remark-gfm": "^1.0.0",
+    "remark-lint-emphasis-marker": "^2.0.0",
+    "remark-lint-list-item-spacing": "^2.0.0",
+    "remark-lint-maximum-heading-length": "^2.0.0",
+    "remark-lint-maximum-line-length": "^2.0.0",
+    "remark-lint-no-dead-urls": "^1.0.2",
+    "remark-lint-no-file-name-irregular-characters": "^1.0.3",
+    "remark-lint-ordered-list-marker-style": "^2.0.0",
+    "remark-lint-strong-marker": "^2.0.0",
+    "remark-lint-unordered-list-marker-style": "^2.0.0",
+    "remark-preset-lint-consistent": "^4.0.0",
+    "remark-preset-lint-markdown-style-guide": "^4.0.0",
+    "remark-preset-lint-recommended": "^5.0.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0",
+    "typescript": "^4.5.2",
+    "vfile-reporter-json": "^2.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "coverage": "yarn run instrument && yarn run cp && yarn run rm",
+    "instrument": "nyc instrument ui ui_cov",
+    "cp": "cp -r ui_cov/* ui",
+    "rm": "rm -rf ui_cov",
+    "prepare": "husky install && rm .husky/pre-commit; npx husky add .husky/pre-commit \"npx lint-staged\"",
+    "precommit:ui": "cd ui && eslint --fix",
+    "build:ui": "yarn workspace ui run build",
+    "start:ui": "yarn workspace ui run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IbrahemMouhamad/autocs.git"
+  },
+  "author": "Ibrahem Mouhamad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IbrahemMouhamad/autocs/issues"
+  },
+  "homepage": "https://github.com/IbrahemMouhamad/autocs#readme"
+}

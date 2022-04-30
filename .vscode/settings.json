@@ -1,0 +1,35 @@
+{
+    "eslint.probe": [
+        "javascript",
+        "typescript",
+        "typescriptreact"
+    ],
+    "eslint.onIgnoredFiles": "warn",
+    "eslint.workingDirectories": [
+        {
+            "directory": "ui",
+        },
+        {
+            "directory": "tests",
+            "!cwd": true
+        }
+    ],
+    "licenser.license": "Custom",
+    "licenser.customHeader": "Copyright (C) @YEAR@ Ibrahem Mouhamad\n\nSPDX-License-Identifier: MIT",
+    "files.trimTrailingWhitespace": true,
+    "cSpell.words": [
+        "autocs",
+        "clsx",
+        "Configurer",
+        "Databind",
+        "Datacenter",
+        "datacenters",
+        "Datagrid",
+        "Ibrahem",
+        "Mouhamad",
+        "precommit",
+        "remarklint",
+        "unsanitized",
+        "vfile"
+    ],
+}

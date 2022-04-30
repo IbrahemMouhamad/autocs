@@ -1,0 +1,7 @@
+.*/
+3rdparty/
+node_modules/
+dist/
+data/
+workspace/
+logs/
