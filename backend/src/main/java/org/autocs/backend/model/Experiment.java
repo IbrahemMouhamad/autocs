@@ -23,14 +23,15 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(value = Include.NON_NULL)
+@JsonInclude(value = Include.NON_DEFAULT)
 public class Experiment {
     private String id;
     private String name;
     private String description;
+    private long runs;
     private long createdDate;
-    private List<ExperimentRecord> datacenters;
-    private List<ExperimentRecord> brokers;
+    private List<ExperimentEntity> datacenters;
+    private List<ExperimentEntity> brokers;
 
     public String getId() {
         return id;
@@ -56,6 +57,14 @@ public class Experiment {
         this.description = description;
     }
 
+    public long getRuns() {
+        return runs;
+    }
+
+    public void setRuns(long runs) {
+        this.runs = runs;
+    }
+
     public long getCreatedDate() {
         return createdDate;
     }
@@ -64,19 +73,19 @@ public class Experiment {
         this.createdDate = createdDate;
     }
 
-    public List<ExperimentRecord> getDatacenters() {
+    public List<ExperimentEntity> getDatacenters() {
         return datacenters;
     }
 
-    public void setDatacenters(List<ExperimentRecord> datacenters) {
+    public void setDatacenters(List<ExperimentEntity> datacenters) {
         this.datacenters = datacenters;
     }
 
-    public List<ExperimentRecord> getBrokers() {
+    public List<ExperimentEntity> getBrokers() {
         return brokers;
     }
 
-    public void setBrokers(List<ExperimentRecord> brokers) {
+    public void setBrokers(List<ExperimentEntity> brokers) {
         this.brokers = brokers;
     }
 

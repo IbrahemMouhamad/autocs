@@ -42,8 +42,8 @@ const BrokerConfigurationForm = (props): JSX.Element | null => (
             {({ getSource }) => getSource && (
                 <>
                     <EntityConfigurationForm getSource={getSource} reference='brokers' />
-                    <VMsConfigurationForm source={getSource('vms')} itemResource='vms' {...props} />
-                    <CloudletsConfigurationForm source={getSource('cloudlets')} itemResource='cloudlets' {...props} />
+                    <VMsConfigurationForm source={getSource('nestedEntities.vms')} itemResource='vms' {...props} />
+                    <CloudletsConfigurationForm source={getSource('nestedEntities.cloudlets')} itemResource='cloudlets' {...props} />
                 </>
             )}
         </FormDataConsumer>

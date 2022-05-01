@@ -12,7 +12,6 @@ package org.autocs.backend.service;
 import java.util.List;
 import java.util.stream.Stream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -55,6 +54,12 @@ public class EntityService {
     public List<Entity> list(String type) throws IOException, StreamReadException, DatabindException {
         final String entitiesPath = storageProps.getEntityDirectory() + File.separator + type;
         List<Entity> entities = new ArrayList<Entity>();
+
+        File directory = new File(entitiesPath);
+        if (!directory.exists()) {
+            directory.mkdir();
+            return entities;
+        }
 
         try (Stream<Path> paths = Files.walk(Paths.get(entitiesPath))) {
             paths

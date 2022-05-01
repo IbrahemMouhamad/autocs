@@ -6,7 +6,7 @@ const entityFields = {
     id: 'Identifier',
     name: 'Name',
     description: 'Description',
-    details: 'Details',
+    properties: 'Properties',
 };
 
 const entityHelpText = {

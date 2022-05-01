@@ -9,6 +9,7 @@ import {
     required,
     minValue,
     maxValue,
+    TextInput,
 } from 'react-admin';
 
 import {
@@ -51,6 +52,11 @@ const EntityConfigurationForm = ({ getSource, reference }): JSX.Element => (
         <Grid item sm={6}>
             <AmountInput source={getSource('amount')} />
         </Grid>
+        <TextInput
+            source={getSource('type')}
+            defaultValue={reference}
+            style={{ display: 'none' }}
+        />
     </Grid>
 );
 

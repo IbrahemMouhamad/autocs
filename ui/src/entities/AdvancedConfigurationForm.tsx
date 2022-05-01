@@ -20,7 +20,7 @@ const AdvancedConfigurationForm = (): JSX.Element | null => {
 
     return !isLoading && Object.keys(data.configuration).length > 0 ? (
         <Accordion icon={SettingsSuggestIcon} headingText={translate('label.entity.form.advanced')} defaultExpanded>
-            <ConfigurationInputs config={data.configuration} name='details' title='' />
+            <ConfigurationInputs config={data.configuration} name='properties' title='' />
         </Accordion>
     ) : null;
 };

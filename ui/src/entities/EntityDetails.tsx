@@ -18,18 +18,19 @@ import {
 
 import icons from '../icons';
 
-const EntityDetails = (): JSX.Element => {
+const EntityDetails = (): JSX.Element | null => {
     const record = useRecordContext();
     const resource = useResourceContext();
     const translate = useTranslate();
-    const { details } = record;
+    const { properties } = record;
 
-    return (
+    return properties ? (
         <Card>
             <CardHeader
                 avatar={React.createElement(icons[resource])}
                 title={
-                    `${translate(`resources.${resource}.name`, 1)} ${translate(`resources.${resource}.fields.details`)}`
+                    // eslint-disable-next-line max-len
+                    `${translate(`resources.${resource}.name`, 1)} ${translate(`resources.${resource}.fields.properties`)}`
                 }
                 titleTypographyProps={{
                     variant: 'button',
@@ -38,9 +39,9 @@ const EntityDetails = (): JSX.Element => {
             <CardContentInner>
                 <Grid container spacing={2}>
                     {
-                        Object.keys(details).map((key) => (
+                        Object.keys(properties).map((key) => (
                             <Grid key={key} item md={4} xs={12}>
-                                <SimpleShowLayout record={details}>
+                                <SimpleShowLayout record={properties}>
                                     <TextField source={key} />
                                 </SimpleShowLayout>
                                 <Divider />
@@ -50,7 +51,7 @@ const EntityDetails = (): JSX.Element => {
                 </Grid>
             </CardContentInner>
         </Card>
-    );
+    ) : null;
 };
 
 export default EntityDetails;

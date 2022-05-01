@@ -32,7 +32,7 @@ const DatacenterConfigurationForm = (props): JSX.Element | null => (
             {({ getSource }) => getSource && (
                 <>
                     <EntityConfigurationForm getSource={getSource} reference='datacenters' />
-                    <HostsConfigurationForm source={getSource('hosts')} itemResource='hosts' {...props} />
+                    <HostsConfigurationForm source={getSource('nestedEntities.hosts')} itemResource='hosts' {...props} />
                 </>
             )}
         </FormDataConsumer>

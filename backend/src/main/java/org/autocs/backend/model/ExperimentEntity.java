@@ -9,7 +9,9 @@
 
 package org.autocs.backend.model;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -23,20 +25,10 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(value = Include.NON_NULL)
-public class ExperimentRecord {
-    private String entityId;
-    private String type;
+@JsonInclude(value = Include.NON_DEFAULT)
+public class ExperimentEntity extends Entity {
     private int amount;
-    private List<ExperimentRecord> nestedEntities;
-
-    public String getEntityId() {
-        return entityId;
-    }
-
-    public void setEntityId(String entityId) {
-        this.entityId = entityId;
-    }
+    Map<String, List<ExperimentEntity>> nestedEntities = new LinkedHashMap<>();
 
     public int getAmount() {
         return amount;
@@ -46,20 +38,11 @@ public class ExperimentRecord {
         this.amount = amount;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public List<ExperimentRecord> getNestedEntities() {
+    public Map<String, List<ExperimentEntity>> getNestedEntities() {
         return nestedEntities;
     }
 
-    public void setNestedEntities(List<ExperimentRecord> nestedEntities) {
+    public void setNestedEntities(Map<String, List<ExperimentEntity>> nestedEntities) {
         this.nestedEntities = nestedEntities;
     }
-
 }

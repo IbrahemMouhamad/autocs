@@ -24,14 +24,14 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(value = Include.NON_NULL)
+@JsonInclude(value = Include.NON_DEFAULT)
 public class Entity {
 
     private String id;
     private String name;
     private String description;
     private long lastModified;
-    Map<String, Object> details = new LinkedHashMap<>();
+    Map<String, Object> properties = new LinkedHashMap<>();
 
     public String getId() {
         return id;
@@ -57,12 +57,12 @@ public class Entity {
         this.description = description;
     }
 
-    public Map<String, Object> getDetails() {
-        return details;
+    public Map<String, Object> getProperties() {
+        return properties;
     }
 
-    public void setDetails(Map<String, Object> properties) {
-        this.details = properties;
+    public void setProperties(Map<String, Object> properties) {
+        this.properties = properties;
     }
 
     public long getLastModified() {
