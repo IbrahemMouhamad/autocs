@@ -16,9 +16,10 @@ import {
     HostResourceProps,
     VMResourceProps,
     CloudletResourceProps,
-    BrokerResourceProps,
 } from './entities';
-import { ExperimentResourceProps } from './experiments';
+import { ProviderResourceProps } from './providers';
+import { BrokerResourceProps } from './brokers';
+import { ScenarioResourceProps } from './scenarios';
 
 import { Layout, lightTheme } from './layout';
 
@@ -33,14 +34,16 @@ const App = (): JSX.Element => (
         i18nProvider={i18nProvider}
         layout={Layout}
         theme={lightTheme}
+        title='AutoCS'
     >
         <Resource {...DatacenterResourceProps} />
         <Resource {...HostResourceProps} />
         <Resource {...VMResourceProps} />
         <Resource {...CloudletResourceProps} />
         <Resource {...ConfigurationResourceProps} />
-        <Resource {...ExperimentResourceProps} />
+        <Resource {...ScenarioResourceProps} />
         <Resource {...BrokerResourceProps} />
+        <Resource {...ProviderResourceProps} />
     </Admin>
 );
 

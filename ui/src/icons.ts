@@ -3,21 +3,25 @@
 // SPDX-License-Identifier: MIT
 
 import ConstructionIcon from '@mui/icons-material/Construction';
-import CorporateFareIcon from '@mui/icons-material/CorporateFare';
+import StorageIcon from '@mui/icons-material/Storage';
 import ComputerIcon from '@mui/icons-material/Computer';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import InputIcon from '@mui/icons-material/Input';
 import PermDataSettingIcon from '@mui/icons-material/PermDataSetting';
-import ScienceIcon from '@mui/icons-material/Science';
-import PersonIcon from '@mui/icons-material/Person';
+import CameraRollIcon from '@mui/icons-material/CameraRoll';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import BusinessIcon from '@mui/icons-material/Business';
+import BiotechIcon from '@mui/icons-material/Biotech';
 
 export default {
     entities: ConstructionIcon,
-    datacenters: CorporateFareIcon,
+    datacenters: StorageIcon,
     hosts: ComputerIcon,
     vms: WidgetsIcon,
     cloudlets: InputIcon,
     configurations: PermDataSettingIcon,
-    experiments: ScienceIcon,
-    brokers: PersonIcon,
+    scenarios: CameraRollIcon,
+    brokers: ManageAccountsIcon,
+    providers: BusinessIcon,
+    experiments: BiotechIcon,
 };

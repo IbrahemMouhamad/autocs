@@ -7,17 +7,22 @@ import JsonField from './JsonField';
 import JsonFieldBox from './JsonFieldBox';
 
 import Accordion, { useAccordionStyles } from './Accordion';
-import ArrayInputView, { useArrayInputViewStyles } from './ArrayInputView';
+import FormTab from './FormTab';
 
 import InputHelpIcon, { IconWithTooltip } from './InputHelpTooltip';
+
+import InfoModal from './InfoModal';
 
 export {
     JsonFieldItem,
     JsonField,
     JsonFieldBox,
     Accordion, useAccordionStyles,
-    ArrayInputView, useArrayInputViewStyles,
     InputHelpIcon, IconWithTooltip,
+    FormTab,
+    InfoModal,
 };
 
 export * from './inputs';
+export * from './list';
+export * from './toolbar';

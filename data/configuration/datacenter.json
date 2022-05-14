@@ -1,0 +1,23 @@
+{
+    "id": "datacenter",
+    "name": "Datacenter",
+    "description": "A datacenter Configuration object",
+    "configuration": {
+        "schedulingInterval": {
+            "description": "The datacenter's scheduling interval",
+            "type": "int",
+            "defaultValue": 5,
+            "required": true
+        },
+        "vmAllocationPolicy": {
+            "description": "adfdfd",
+            "type": "select",
+            "defaultValue": "Simple",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "Simple"
+            ]
+        }
+    }
+}

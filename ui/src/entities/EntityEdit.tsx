@@ -4,15 +4,32 @@
 
 import React from 'react';
 import {
-    Edit,
+    Edit, useResourceContext,
 } from 'react-admin';
 
-import EntityForm from './EntityForm';
+import { EditPageToolbar } from '../common';
 
-const EntityEdit = (props): JSX.Element => (
-    <Edit {...props} redirect='list' mutationMode='optimistic'>
-        <EntityForm {...props} edit />
-    </Edit>
-);
+import EntityForm from './EntityForm';
+import DatacenterForm from './DatacenterForm';
+
+const EntityEdit = (props): JSX.Element => {
+    const resource = useResourceContext(props);
+
+    return (
+        <Edit
+            actions={<EditPageToolbar />}
+            redirect='list'
+            {...props}
+        >
+            {
+                resource === 'datacenters' ? (
+                    <DatacenterForm {...props} />
+                ) : (
+                    <EntityForm {...props} edit />
+                )
+            }
+        </Edit>
+    );
+};
 
 export default EntityEdit;

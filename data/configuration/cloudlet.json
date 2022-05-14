@@ -1,0 +1,61 @@
+{
+    "id": "cloudlet",
+    "name": "Cloudlet",
+    "description": "A cloudlet Configuration object",
+    "configuration": {
+        "pes": {
+            "description": "The number of processing elements required to process a cloudlet",
+            "type": "int",
+            "defaultValue": 2,
+            "required": true
+        },
+        "length": {
+            "description": "The maximum length of a cloudlet.",
+            "type": "int",
+            "defaultValue": 1000,
+            "required": true
+        },
+        "fileSize": {
+            "description": "The cloudlets' file size",
+            "type": "int",
+            "defaultValue": 50,
+            "required": false
+        },
+        "outputSize": {
+            "description": "The cloudlets' output size",
+            "type": "int",
+            "defaultValue": 50,
+            "required": false
+        },
+        "utilizationModelCpu": {
+            "description": "The CPU utilization model",
+            "type": "select",
+            "defaultValue": "Full",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "Full"
+            ]
+        },
+        "utilizationModelRam": {
+            "description": "The RAM utilization model",
+            "type": "select",
+            "defaultValue": "Full",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "Full"
+            ]
+        },
+        "utilizationModelBw": {
+            "description": "The bandwidth utilization model",
+            "type": "select",
+            "defaultValue": "Full",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "Full"
+            ]
+        }
+    }
+}

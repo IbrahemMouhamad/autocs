@@ -17,11 +17,12 @@ import {
 import icons from '../icons';
 import SubMenu from './SubMenu';
 
-type MenuName = 'menuEntities';
+type MenuName = 'menuEntities' | 'menuExperiments';
 
 const Menu = ({ dense = false }: MenuProps): JSX.Element => {
     const [state, setState] = useState({
         menuEntities: true,
+        menuExperiments: false,
     });
     const translate = useTranslate();
     const [open] = useSidebarState();
@@ -51,15 +52,6 @@ const Menu = ({ dense = false }: MenuProps): JSX.Element => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to='/datacenters'
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate('resources.datacenters.name', {
-                        smart_count: 2,
-                    })}
-                    leftIcon={React.createElement(icons.datacenters)}
-                    dense={dense}
-                />
-                <MenuItemLink
                     to='/hosts'
                     state={{ _scrollToTop: true }}
                     primaryText={translate('resources.hosts.name', {
@@ -69,12 +61,12 @@ const Menu = ({ dense = false }: MenuProps): JSX.Element => {
                     dense={dense}
                 />
                 <MenuItemLink
-                    to='/brokers'
+                    to='/datacenters'
                     state={{ _scrollToTop: true }}
-                    primaryText={translate('resources.brokers.name', {
+                    primaryText={translate('resources.datacenters.name', {
                         smart_count: 2,
                     })}
-                    leftIcon={React.createElement(icons.brokers)}
+                    leftIcon={React.createElement(icons.datacenters)}
                     dense={dense}
                 />
                 <MenuItemLink
@@ -96,6 +88,41 @@ const Menu = ({ dense = false }: MenuProps): JSX.Element => {
                     dense={dense}
                 />
             </SubMenu>
+            <SubMenu
+                handleToggle={() => handleToggle('menuExperiments')}
+                isOpen={state.menuExperiments}
+                name='menu.experiments'
+                icon={React.createElement(icons.experiments)}
+                dense={dense}
+            >
+                <MenuItemLink
+                    to='/providers'
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate('resources.providers.name', {
+                        smart_count: 2,
+                    })}
+                    leftIcon={React.createElement(icons.providers)}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to='/brokers'
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate('resources.brokers.name', {
+                        smart_count: 2,
+                    })}
+                    leftIcon={React.createElement(icons.brokers)}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to='/scenarios'
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate('resources.scenarios.name', {
+                        smart_count: 2,
+                    })}
+                    leftIcon={React.createElement(icons.scenarios)}
+                    dense={dense}
+                />
+            </SubMenu>
             <MenuItemLink
                 to='/configurations'
                 state={{ _scrollToTop: true }}
@@ -103,15 +130,6 @@ const Menu = ({ dense = false }: MenuProps): JSX.Element => {
                     smart_count: 2,
                 })}
                 leftIcon={React.createElement(icons.configurations)}
-                dense={dense}
-            />
-            <MenuItemLink
-                to='/experiments'
-                state={{ _scrollToTop: true }}
-                primaryText={translate('resources.experiments.name', {
-                    smart_count: 2,
-                })}
-                leftIcon={React.createElement(icons.experiments)}
                 dense={dense}
             />
         </Box>

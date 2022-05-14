@@ -12,6 +12,13 @@ package org.autocs.backend;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Backend Application
+ *
+ * @author Ibrahem Mouhamad
+ * @since Backend Server 1.0.0
+ */
+
 @SpringBootApplication
 public class BackendApplication {
 

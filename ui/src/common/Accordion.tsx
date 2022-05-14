@@ -12,6 +12,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const useAccordionStyles = makeStyles(
     (theme) => ({
+        root: {
+            width: '100%',
+        },
         heading: {
             fontSize: theme.typography.pxToRem(15),
         },
@@ -40,6 +43,7 @@ const Accordion = ({
     return (
         <MUIAccordion
             {...rest}
+            className={classes.root}
         >
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}

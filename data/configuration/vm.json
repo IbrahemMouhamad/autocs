@@ -1,0 +1,41 @@
+{
+    "id": "vm",
+    "name": "Virtual Machine",
+    "description": "A VM Configuration object",
+    "configuration": {
+        "pes": {
+            "description": "The number of processing elements used by the virtual machine",
+            "type": "int",
+            "defaultValue": 1,
+            "required": true
+        },
+        "mips": {
+            "description": "The amount of mips required by the virtual machine",
+            "type": "int",
+            "defaultValue": 1000,
+            "required": true
+        },
+        "ram": {
+            "description": "The amount of RAM required by the virtual machine",
+            "type": "int",
+            "defaultValue": 512,
+            "required": true
+        },
+        "bw": {
+            "description": "The amount of bandwidth required by the virtual machine",
+            "type": "int",
+            "defaultValue": 1000,
+            "required": true
+        },
+        "cloudletScheduler": {
+            "description": "The virtual machine's scheduling policy",
+            "type": "select",
+            "defaultValue": "SpaceShared",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "SpaceShared"
+            ]
+        }
+    }
+}

@@ -1,0 +1,15 @@
+# Copyright (C) 2022 Ibrahem Mouhamad
+#
+# SPDX-License-Identifier: MIT
+
+version: '3.3'
+
+services:
+    autocs:
+        build:
+            context: .
+
+    autocs_ui:
+        build:
+            context: .
+            dockerfile: Dockerfile.ui

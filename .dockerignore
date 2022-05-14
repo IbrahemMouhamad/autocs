@@ -1,0 +1,4 @@
+/.git
+/workspace
+/.vscode
+**/node_modules

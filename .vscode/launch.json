@@ -5,17 +5,25 @@
     "version": "1.0.0",
     "configurations": [
         {
+            "name": "server: engine",
+            "type": "java",
+            "request": "launch",
+            "mainClass": "org.autocs.engine.EngineApplication",
+            "projectName": "engine"
+        },
+        {
             "name": "server: backend",
             "type": "java",
             "request": "launch",
             "mainClass": "org.autocs.backend.BackendApplication",
             "projectName": "backend"
-        },
+        }
     ],
     "compounds": [
         {
             "name": "server: debug",
             "configurations": [
+                "server: engine",
                 "server: backend"
             ]
         }

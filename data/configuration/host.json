@@ -1,0 +1,77 @@
+{
+    "id": "host",
+    "name": "Host",
+    "description": "A host configuration object",
+    "configuration": {
+        "pes": {
+            "description": "The host's number of processing elements",
+            "type": "int",
+            "defaultValue": 1,
+            "required": true
+        },
+        "peProvisioner": {
+            "description": "",
+            "type": "select",
+            "defaultValue": "Simple",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "Simple"
+            ]
+        },
+        "mips": {
+            "description": "The amount of mips per processing units",
+            "type": "int",
+            "defaultValue": 1000,
+            "required": true
+        },
+        "vmScheduler": {
+            "description": "",
+            "type": "select",
+            "defaultValue": "TimeShared",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "TimeShared"
+            ]
+        },
+        "ram": {
+            "description": "The amount of RAM in Megabytes",
+            "type": "int",
+            "defaultValue": 1024,
+            "required": true
+        },
+        "ramProvisioner": {
+            "description": "",
+            "type": "select",
+            "defaultValue": "Simple",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "Simple"
+            ]
+        },
+        "bw": {
+            "description": "The amount of Bandwidth in Megabytes",
+            "type": "int",
+            "defaultValue": 10000,
+            "required": true
+        },
+        "bwProvisioner": {
+            "description": "",
+            "type": "select",
+            "defaultValue": "Simple",
+            "required": true,
+            "multiple": false,
+            "options": [
+                "Simple"
+            ]
+        },
+        "storage": {
+            "description": "The storage capacity in Megabytes",
+            "type": "int",
+            "defaultValue": 10000,
+            "required": true
+        }
+    }
+}

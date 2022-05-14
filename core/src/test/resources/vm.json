@@ -1,0 +1,13 @@
+{
+    "id": "1652428711203",
+    "name": "v1",
+    "description": "v1",
+    "lastModified": 1652428711203,
+    "properties": {
+        "pes": 2,
+        "mips": 1000,
+        "ram": 512,
+        "bw": 1000,
+        "cloudletScheduler": "SpaceShared"
+    }
+}

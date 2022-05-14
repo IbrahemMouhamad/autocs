@@ -17,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.sql.Timestamp;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -27,7 +28,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.autocs.backend.StorageProperties;
 import org.autocs.backend.model.Entity;
 
@@ -39,21 +39,28 @@ import org.autocs.backend.model.Entity;
  */
 
 @Service
-public class EntityService {
+public class EntityService<T extends Entity> {
 
-    private final String EXT = ".json";
+    protected final String EXT = ".json";
 
     private final Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
     @Autowired
-    private StorageProperties storageProps;
+    protected StorageProperties storageProps;
 
     @Autowired
     private ObjectMapper objectMapper;
 
-    public List<Entity> list(String type) throws IOException, StreamReadException, DatabindException {
-        final String entitiesPath = storageProps.getEntityDirectory() + File.separator + type;
-        List<Entity> entities = new ArrayList<Entity>();
+    private Class<T> type;
+
+    @SuppressWarnings("unchecked")
+    public EntityService() {
+        type = (Class<T>) Entity.class;
+    }
+
+    public List<T> list(String type) throws IOException, StreamReadException, DatabindException {
+        final String entitiesPath = this.getEntitiesDirectoryPath(type);
+        List<T> entities = new ArrayList<T>();
 
         File directory = new File(entitiesPath);
         if (!directory.exists()) {
@@ -66,7 +73,7 @@ public class EntityService {
                     .filter(Files::isRegularFile)
                     .forEach(path -> {
                         try {
-                            Entity entity = objectMapper.readValue(path.toFile(), Entity.class);
+                            T entity = objectMapper.readValue(path.toFile(), this.type);
                             entity.setId(path.toFile().getName().replace(EXT, ""));
                             entity.setLastModified(path.toFile().lastModified());
                             entities.add(entity);
@@ -78,22 +85,23 @@ public class EntityService {
         return entities;
     }
 
-    public Entity getById(String type, String id) {
-        final String entityPath = this.getEntityPath(type, id);
+    public T getById(String type, String id) {
+        final String entityPath = this.getEntityFilePath(type, id);
         try {
             File entityFile = new File(entityPath);
-            Entity entity = objectMapper.readValue(entityFile, Entity.class);
-            entity.setLastModified(entityFile.lastModified());
+            T entity = objectMapper.readValue(entityFile, this.type);
             return entity;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public Entity create(String type, Entity newEntity) throws StreamWriteException, DatabindException, IOException {
+    public T create(String type, T newEntity)
+            throws StreamWriteException, DatabindException, IOException {
         final long id = timestamp.getTime();
-        final String entityPath = this.getEntityPath(type, "" + id);
+        final String entityPath = this.getEntityFilePath(type, "" + id);
         newEntity.setId("" + id);
+        newEntity.setLastModified(id);
 
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         objectMapper.writeValue(new File(entityPath), newEntity);
@@ -101,21 +109,33 @@ public class EntityService {
         return newEntity;
     }
 
-    public Entity update(String type, Entity newEntity) throws StreamWriteException, DatabindException, IOException {
-        final String entityPath = this.getEntityPath(type, newEntity.getId());
-        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-        objectMapper.writeValue(new File(entityPath), newEntity);
+    public T update(String type, T entity)
+            throws StreamWriteException, DatabindException, IOException {
+        final long currentTimestamp = timestamp.getTime();
+        final String entityPath = this.getEntityFilePath(type, entity.getId());
+        entity.setLastModified(currentTimestamp);
+        entity.setStatistics(new LinkedHashMap<>());
 
-        return newEntity;
+        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        objectMapper.writeValue(new File(entityPath), entity);
+
+        return entity;
     }
 
     public void deleteById(String type, String id) throws IOException {
-        final String entityPath = this.getEntityPath(type, id);
+        final String entityPath = this.getEntityFilePath(type, id);
         Files.deleteIfExists(Paths.get(entityPath));
     }
 
-    private String getEntityPath(String type, String id) {
-        return storageProps.getEntityDirectory() + File.separator + type
-                + File.separator + id + EXT;
+    protected String getEntitiesDirectoryPath(String type) {
+        return storageProps.getEntityDirectory() + File.separator + type;
+    }
+
+    protected String getEntityFilePath(String type, String id) {
+        return getEntitiesDirectoryPath(type) + File.separator + id + EXT;
+    }
+
+    public void setType(Class<T> type) {
+        this.type = type;
     }
 }

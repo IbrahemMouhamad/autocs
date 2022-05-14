@@ -1,0 +1,6 @@
+{
+    "id": "provider",
+    "name": "Provider",
+    "description": "A provider Configuration object",
+    "configuration": {}
+}

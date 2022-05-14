@@ -1,0 +1,17 @@
+{
+    "id": "1652423247831",
+    "name": "h1",
+    "description": "h1",
+    "lastModified": 1652423247831,
+    "properties": {
+        "pes": 32,
+        "peProvisioner": "Simple",
+        "mips": 1000,
+        "vmScheduler": "TimeShared",
+        "ram": 2048,
+        "ramProvisioner": "Simple",
+        "bw": 10000,
+        "bwProvisioner": "Simple",
+        "storage": 1000000
+    }
+}

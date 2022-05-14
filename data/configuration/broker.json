@@ -1,0 +1,6 @@
+{
+    "id": "broker",
+    "name": "Broker",
+    "description": "A broker Configuration object which represent a customer",
+    "configuration": {}
+}

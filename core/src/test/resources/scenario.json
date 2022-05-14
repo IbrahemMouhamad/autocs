@@ -1,0 +1,152 @@
+{
+    "id": "1652496333731",
+    "name": "s1",
+    "description": "s1",
+    "lastModified": 1652496333731,
+    "provider": {
+        "id": "1652426791069",
+        "name": "p2",
+        "description": "p1",
+        "lastModified": 1652427170624,
+        "datacenters": [
+            {
+                "id": "1652426791056",
+                "name": "d1",
+                "amount": 1,
+                "description": "d1",
+                "lastModified": 1652426791056,
+                "properties": {
+                    "schedulingInterval": 5,
+                    "vmAllocationPolicy": "Simple"
+                },
+                "hosts": [
+                    {
+                        "id": "1652423247831",
+                        "name": "h1",
+                        "description": "h1",
+                        "lastModified": 1652423247831,
+                        "amount": 5,
+                        "properties": {
+                            "pes": 32,
+                            "peProvisioner": "Simple",
+                            "mips": 1000,
+                            "vmScheduler": "TimeShared",
+                            "ram": 2048,
+                            "ramProvisioner": "Simple",
+                            "bw": 10000,
+                            "bwProvisioner": "Simple",
+                            "storage": 1000000
+                        }
+                    },
+                    {
+                        "id": "1652423247831",
+                        "name": "h1",
+                        "description": "h1",
+                        "lastModified": 1652423247831,
+                        "amount": 5,
+                        "properties": {
+                            "pes": 32,
+                            "peProvisioner": "Simple",
+                            "mips": 1000,
+                            "vmScheduler": "TimeShared",
+                            "ram": 2048,
+                            "ramProvisioner": "Simple",
+                            "bw": 10000,
+                            "bwProvisioner": "Simple",
+                            "storage": 1000000
+                        }
+                    }
+                ],
+                "statistics": {
+                    "Hosts Number": "10",
+                    "Processors Number": "320",
+                    "Total mips": "10000",
+                    "Total ram": "20.00 GB",
+                    "Total Storage": "10.00 TB"
+                },
+                "hostsNumber": 10,
+                "totalPES": 320,
+                "totalMIPS": 10000,
+                "totalRAM": 20480,
+                "totalStorage": 10000000
+            }
+        ],
+        "statistics": {
+            "Datacenter Number": "1",
+            "Hosts Number": "10",
+            "Processors Number": "320",
+            "Total mips": "10000",
+            "Total ram": "20.00 GB",
+            "Total Storage": "10.00 TB"
+        }
+    },
+    "brokers": [
+        {
+            "id": "1652429077512",
+            "name": "b2",
+            "description": "b1",
+            "lastModified": 1652496333688,
+            "amount": 1,
+            "vms": [
+                {
+                    "id": "1652428711203",
+                    "name": "v1",
+                    "description": "v1",
+                    "lastModified": 1652428711203,
+                    "amount": 50,
+                    "properties": {
+                        "pes": 2,
+                        "mips": 1000,
+                        "ram": 512,
+                        "bw": 1000,
+                        "cloudletScheduler": "SpaceShared"
+                    }
+                }
+            ],
+            "cloudlets": [
+                {
+                    "id": "1652428711203",
+                    "name": "c1",
+                    "description": "c1",
+                    "lastModified": 1652428711203,
+                    "amount": 50,
+                    "properties": {
+                        "pes": 2,
+                        "length": 1000,
+                        "fileSize": 1024,
+                        "outputSize": 1024,
+                        "utilizationModelCpu": "Full",
+                        "utilizationModelRam": "Full",
+                        "utilizationModelBw": "Full"
+                    }
+                }
+            ],
+            "statistics": {
+                "Vms Number": "50",
+                "Total Vm Processors Number": "200",
+                "Total Vm mips": "100000",
+                "Total Vm ram": "50.00 GB",
+                "Total Vm Bandwidth": "100.00 GB",
+                "Cloudlets Number": "50",
+                "Total Cloudlets Processors Number": "104",
+                "Total Cloudlets length": "52000"
+            },
+            "VmsNumber": 0,
+            "totalVmPES": 200,
+            "totalVmMIPS": 100000,
+            "totalVmRAM": 51200,
+            "totalVmBW": 100000,
+            "CloudletsNumber": 0,
+            "totalCloudletsPES": 104,
+            "totalCloudletsLength": 52000
+        }
+    ],
+    "statistics": {
+        "Datacenter Number": "1",
+        "Hosts Number": "10",
+        "Processors Number": "320",
+        "Total mips": "10000",
+        "Total ram": "20.00 GB",
+        "Total Storage": "10.00 TB"
+    }
+}

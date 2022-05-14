@@ -1,0 +1,60 @@
+{
+    "id": "1652426791056",
+    "name": "d1",
+    "description": "d1",
+    "lastModified": 1652426791056,
+    "properties": {
+        "schedulingInterval": 5,
+        "vmAllocationPolicy": "Simple"
+    },
+    "hosts": [
+        {
+            "id": "1652423247831",
+            "name": "h1",
+            "description": "h1",
+            "lastModified": 1652423247831,
+            "amount": 5,
+            "properties": {
+                "pes": 32,
+                "peProvisioner": "Simple",
+                "mips": 1000,
+                "vmScheduler": "TimeShared",
+                "ram": 2048,
+                "ramProvisioner": "Simple",
+                "bw": 10000,
+                "bwProvisioner": "Simple",
+                "storage": 1000000
+            }
+        },
+        {
+            "id": "1652423247831",
+            "name": "h1",
+            "description": "h1",
+            "lastModified": 1652423247831,
+            "amount": 5,
+            "properties": {
+                "pes": 32,
+                "peProvisioner": "Simple",
+                "mips": 1000,
+                "vmScheduler": "TimeShared",
+                "ram": 2048,
+                "ramProvisioner": "Simple",
+                "bw": 10000,
+                "bwProvisioner": "Simple",
+                "storage": 1000000
+            }
+        }
+    ],
+    "statistics": {
+        "Hosts Number": "10",
+        "Processors Number": "320",
+        "Total mips": "10000",
+        "Total ram": "20.00 GB",
+        "Total Storage": "10.00 TB"
+    },
+    "hostsNumber": 10,
+    "totalPES": 320,
+    "totalMIPS": 10000,
+    "totalRAM": 20480,
+    "totalStorage": 10000000
+}

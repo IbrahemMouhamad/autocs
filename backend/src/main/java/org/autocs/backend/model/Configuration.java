@@ -1,6 +1,6 @@
 /*
- * Title:        Backend Server
- * Description:  Backend server of Auto Cloud Simulator (AutoCS)
+ * Title:        Core Package
+ * Description:  Core package of Auto Cloud Simulator (AutoCS)
  * License:      MIT
  *
  * Copyright (C) 2022 Ibrahem Mouhamad
@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * A java class to represent a configuration file
  *
  * @author Ibrahem Mouhamad
- * @since Backend Server 1.0.0
+ * @since Core Package 1.0.0
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)

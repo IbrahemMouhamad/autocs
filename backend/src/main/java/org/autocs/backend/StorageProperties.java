@@ -23,7 +23,7 @@ public class StorageProperties {
     private String configurationDirectory;
     private String workspaceDirectory;
     private String entityDirectory;
-    private String experimentDirectory;
+    private String scenarioDirectory;
 
     public String getBasePath() {
         return basePath;
@@ -49,9 +49,9 @@ public class StorageProperties {
         return this.entityDirectory;
     }
 
-    public String getExperimentDirectory() {
-        this.createFolder(this.experimentDirectory);
-        return this.experimentDirectory;
+    public String getScenarioDirectory() {
+        this.createFolder(this.scenarioDirectory);
+        return this.scenarioDirectory;
     }
 
     public void setBasePath(String basePath) {
@@ -74,8 +74,8 @@ public class StorageProperties {
         this.entityDirectory = entityDirectory;
     }
 
-    public void setExperimentDirectory(String experimentDirectory) {
-        this.experimentDirectory = experimentDirectory;
+    public void setScenarioDirectory(String scenarioDirectory) {
+        this.scenarioDirectory = scenarioDirectory;
     }
 
     private void createFolder(String path) {

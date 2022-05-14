@@ -1,0 +1,6 @@
+{
+    "id": "scenario",
+    "name": "Scenario",
+    "description": "A scenario Configuration object",
+    "configuration": {}
+}

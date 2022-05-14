@@ -1,0 +1,15 @@
+{
+    "id": "1652428711203",
+    "name": "c1",
+    "description": "c1",
+    "lastModified": 1652428711203,
+    "properties": {
+        "pes": 2,
+        "length": 1000,
+        "fileSize": 1024,
+        "outputSize": 1024,
+        "utilizationModelCpu": "Full",
+        "utilizationModelRam": "Full",
+        "utilizationModelBw": "Full"
+    }
+}

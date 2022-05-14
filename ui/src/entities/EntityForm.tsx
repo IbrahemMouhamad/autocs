@@ -14,10 +14,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import BasicConfigurationForm from './BasicConfigurationForm';
 import AdvancedConfigurationForm from './AdvancedConfigurationForm';
 
-const EntityForm = ({ edit }): JSX.Element => (
+const EntityForm = ({ edit, children }): JSX.Element => (
     <Form>
         <BasicConfigurationForm />
         <AdvancedConfigurationForm />
+        {children}
         <Toolbar>
             <SaveButton
                 label={edit ? 'ra.action.edit' : 'ra.action.create'}

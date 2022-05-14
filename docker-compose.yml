@@ -1,0 +1,75 @@
+version: '3'
+services:
+    autocs:
+        container_name: autocs
+        image: autocs/autocs_server
+        restart: always
+        depends_on:
+            - autocs_engine
+            - rabbitmq
+        labels:
+            - traefik.enable=true
+            - traefik.http.services.autocs.loadbalancer.server.port=8080
+            - traefik.http.routers.autocs.rule=Host(`${AUTOCS_HOST:-localhost}`) && PathPrefix(`/api/`)
+            - traefik.http.routers.autocs.entrypoints=web
+        volumes:
+            - autocs_data:/tmp/data
+            - autocs_workspace:/tmp/workspace
+            - autocs_logs:/tmp/logs
+        networks:
+            - autocs
+
+    autocs_ui:
+        container_name: autocs_ui
+        image: autocs/autocs_ui
+        restart: always
+        depends_on:
+            - autocs
+        labels:
+            - traefik.enable=true
+            - traefik.http.services.autocs-ui.loadbalancer.server.port=80
+            - traefik.http.routers.autocs-ui.rule=Host(`${AUTOCS_HOST:-localhost}`)
+            - traefik.http.routers.autocs-ui.entrypoints=web
+        networks:
+            - autocs
+
+    traefik:
+        image: traefik:v2.4
+        container_name: traefik
+        restart: always
+        command:
+            - "--providers.docker.exposedByDefault=false"
+            - "--providers.docker.network=autocs"
+            - "--entryPoints.web.address=:8080"
+        # Uncomment to get Traefik dashboard
+        #   - "--entryPoints.dashboard.address=:8090"
+        #   - "--api.dashboard=true"
+        # labels:
+        #   - traefik.enable=true
+        #   - traefik.http.routers.dashboard.entrypoints=dashboard
+        #   - traefik.http.routers.dashboard.service=api@internal
+        #   - traefik.http.routers.dashboard.rule=Host(`${AUTOCS_HOST:-localhost}`)
+        ports:
+            - 8080:8080
+            - 8090:8090
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+        networks:
+            - autocs
+
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:management
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+
+volumes:
+    autocs_db:
+    autocs_data:
+    autocs_workspace:
+    autocs_logs:
+
+
+networks:
+    autocs:

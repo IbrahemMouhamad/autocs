@@ -8,12 +8,13 @@ import defaultDataProvider, { baseUrl } from './defaultDataProvider';
 
 const resources = {
     configurations: 'configurations',
-    datacenters: 'entities/datacenters',
+    providers: 'providers',
+    datacenters: 'datacenters',
     hosts: 'entities/hosts',
     vms: 'entities/vms',
     cloudlets: 'entities/cloudlets',
-    brokers: 'entities/brokers',
-    experiments: 'experiments',
+    brokers: 'brokers',
+    scenarios: 'scenarios',
 };
 
 const dataProviderWrapper: DataProvider = {

@@ -7,6 +7,8 @@ const entityFields = {
     name: 'Name',
     description: 'Description',
     properties: 'Properties',
+    statistics: 'Statistics',
+    info: 'Information',
 };
 
 const entityHelpText = {
@@ -16,6 +18,11 @@ const entityHelpText = {
 
 const en = {
     resources: {
+        providers: {
+            name: 'Provider |||| Providers',
+            fields: entityFields,
+            helpText: entityHelpText,
+        },
         datacenters: {
             name: 'Datacenter |||| Datacenters',
             fields: entityFields,
@@ -32,7 +39,7 @@ const en = {
             helpText: entityHelpText,
         },
         vms: {
-            name: 'VM |||| VMs',
+            name: 'Virtual Machine |||| Virtual Machines',
             fields: entityFields,
             helpText: entityHelpText,
         },
@@ -50,8 +57,8 @@ const en = {
                 details: 'Details',
             },
         },
-        experiments: {
-            name: 'Experiment |||| Experiments',
+        scenarios: {
+            name: 'Scenario |||| Scenarios',
             fields: {
                 id: 'Identifier',
                 name: 'Name',
@@ -63,36 +70,68 @@ const en = {
                 },
             },
             helpText: {
-                name: 'A name referring to the experiment',
-                description: 'A brief description of the experiment',
-                runs: 'The number of times the experiment will run before submitting the results',
+                name: 'A name referring to the scenario',
+                description: 'A brief description of the scenario',
+                runs: 'The number of times the scenario will run before submitting the results',
                 entities: {
-                    id: 'The name of the instance to be used in the experiment',
-                    amount: 'The amount of the instance to be added in the experiment',
+                    id: 'The name of the instance to be used',
+                    amount: 'The amount of the instance to be added',
                 },
             },
         },
     },
     menu: {
         entities: 'Entities',
+        experiments: 'Experiments',
     },
     label: {
         entity: {
             form: {
                 basic: 'Basic Configuration',
                 advanced: 'Advanced Configuration',
+                hosts: 'Hosts Assignment',
+            },
+            button: {
+                add_datacenter: 'Add new Datacenter',
+                add_vm: 'Add new Virtual Machine',
+                add_cloudlet: 'Add new Cloudlet',
+                add_provider: 'Add new Provider',
+                assign: 'Assign',
             },
         },
-        experiment: {
-            form: {
-                basic: 'Basic Configuration',
-                datacenters: 'Datacenters Configuration',
-                brokers: 'Brokers Configuration',
+        provider: {
+            tabs: {
+                general: 'Configuration',
+                datacenters: 'Datacenters Assignment',
+            },
+            button: {
+                create: 'Continue',
+                edit: 'Edit Provider',
+                delete: 'Delete Provider',
+            },
+        },
+        broker: {
+            tabs: {
+                general: 'Configuration',
+                vms: 'Virtual Machines',
+                cloudlets: 'Workload',
+            },
+            button: {
+                create: 'Continue',
+                edit: 'Edit Broker',
+                delete: 'Delete Broker',
+            },
+        },
+        scenario: {
+            tabs: {
+                providers: 'Provider Configuration',
             },
         },
     },
     action: {
         run: 'Run',
+        back: 'back',
+        new: 'Add New',
     },
 };
 
