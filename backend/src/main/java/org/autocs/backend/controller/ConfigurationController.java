@@ -15,8 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.autocs.backend.model.Configuration;
-import org.autocs.backend.service.ConfigurationService;
+
+import org.autocs.core.service.ConfigurationService;
+import org.autocs.core.model.Configuration;
 
 /**
  * Entity configuration endpoint

@@ -10,13 +10,17 @@
             "required": true
         },
         "vmAllocationPolicy": {
-            "description": "adfdfd",
+            "description": "A policy to choose a host to place or migrate a given Vm",
             "type": "select",
             "defaultValue": "Simple",
             "required": true,
             "multiple": false,
             "options": [
-                "Simple"
+                "Simple",
+                "RoundRobin",
+                "Random",
+                "FirstFit",
+                "BestFit"
             ]
         }
     }

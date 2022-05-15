@@ -20,6 +20,7 @@ import {
 import { ProviderResourceProps } from './providers';
 import { BrokerResourceProps } from './brokers';
 import { ScenarioResourceProps } from './scenarios';
+import { RunResourceProps } from './experimentRuns';
 
 import { Layout, lightTheme } from './layout';
 
@@ -44,6 +45,7 @@ const App = (): JSX.Element => (
         <Resource {...ScenarioResourceProps} />
         <Resource {...BrokerResourceProps} />
         <Resource {...ProviderResourceProps} />
+        <Resource {...RunResourceProps} />
     </Admin>
 );
 

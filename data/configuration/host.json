@@ -10,7 +10,7 @@
             "required": true
         },
         "peProvisioner": {
-            "description": "",
+            "description": "The provisioning policy used by a host to provide virtual processing elements (PEs) to its virtual machines",
             "type": "select",
             "defaultValue": "Simple",
             "required": true,
@@ -32,7 +32,8 @@
             "required": true,
             "multiple": false,
             "options": [
-                "TimeShared"
+                "TimeShared",
+                "SpaceShared"
             ]
         },
         "ram": {
@@ -42,7 +43,7 @@
             "required": true
         },
         "ramProvisioner": {
-            "description": "",
+            "description": "The provisioning policy used by a host to provide RAM to its Vms",
             "type": "select",
             "defaultValue": "Simple",
             "required": true,
@@ -58,7 +59,7 @@
             "required": true
         },
         "bwProvisioner": {
-            "description": "",
+            "description": "The provisioning policy used by a host to provide Bandwidth to its Vms",
             "type": "select",
             "defaultValue": "Simple",
             "required": true,

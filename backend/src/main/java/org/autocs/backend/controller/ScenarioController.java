@@ -21,8 +21,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.autocs.backend.model.Scenario;
-import org.autocs.backend.service.ScenarioService;
+
+import org.autocs.core.service.ScenarioService;
+import org.autocs.core.model.Scenario;
 
 /**
  * Scenarios endpoint

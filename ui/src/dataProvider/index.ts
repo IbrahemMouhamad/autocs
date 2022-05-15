@@ -13,6 +13,7 @@ const resources = {
     hosts: 'entities/hosts',
     vms: 'entities/vms',
     cloudlets: 'entities/cloudlets',
+    runs: 'runs',
     brokers: 'brokers',
     scenarios: 'scenarios',
 };

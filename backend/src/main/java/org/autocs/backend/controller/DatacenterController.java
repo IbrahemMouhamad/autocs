@@ -21,8 +21,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.autocs.backend.model.Datacenter;
-import org.autocs.backend.service.DatacenterService;
+
+import org.autocs.core.service.DatacenterService;
+import org.autocs.core.model.Datacenter;
 
 /**
  * Datacenters endpoint

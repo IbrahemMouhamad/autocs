@@ -1,0 +1,15 @@
+{
+    "id": "run",
+    "name": "Experiment Run",
+    "description": "An experiment run configuration object",
+    "configuration": {
+        "numberOfRuns": {
+            "description": "The number of times the simulation will repeated before return the results",
+            "type": "int",
+            "defaultValue": 3,
+            "minValue": 1,
+            "maxValue": 100,
+            "required": true
+        }
+    }
+}

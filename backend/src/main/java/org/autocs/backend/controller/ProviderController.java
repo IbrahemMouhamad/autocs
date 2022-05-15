@@ -21,8 +21,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.autocs.backend.model.Provider;
-import org.autocs.backend.service.ProviderService;
+
+import org.autocs.core.service.ProviderService;
+import org.autocs.core.model.Provider;
 
 /**
  * Cloud service providers endpoint

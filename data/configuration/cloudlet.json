@@ -34,7 +34,8 @@
             "required": true,
             "multiple": false,
             "options": [
-                "Full"
+                "Full",
+                "Dynamic"
             ]
         },
         "utilizationModelRam": {
@@ -44,7 +45,8 @@
             "required": true,
             "multiple": false,
             "options": [
-                "Full"
+                "Full",
+                "Dynamic"
             ]
         },
         "utilizationModelBw": {
@@ -54,7 +56,8 @@
             "required": true,
             "multiple": false,
             "options": [
-                "Full"
+                "Full",
+                "Dynamic"
             ]
         }
     }

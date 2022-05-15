@@ -23,17 +23,15 @@ import org.cloudsimplus.testbeds.ExperimentRunner;
 
 import static java.util.Comparator.comparingDouble;
 
-import java.io.File;
-import java.io.IOException;
+import org.autocs.core.model.Scenario;
 
 public class AutoCSExperiment extends Experiment {
 
     private final ScenarioHolder scenario;
 
-    public AutoCSExperiment(int index, ExperimentRunner<AutoCSExperiment> runner, final File inputFile)
-            throws IOException {
+    public AutoCSExperiment(int index, ExperimentRunner<AutoCSExperiment> runner, final Scenario scenarioEntity) {
         super(index, runner);
-        this.scenario = ScenarioHolder.read(inputFile, this.getSimulation());
+        this.scenario = ScenarioHolder.resolve(scenarioEntity, this.getSimulation());
         this.setDatacentersNumber(scenario.getDatacenterList().size());
         this.setBrokersNumber(scenario.getBrokerList().size());
         setVmsByBrokerFunction(broker -> scenario.getVmsNumberPerBroker(broker));

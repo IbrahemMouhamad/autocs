@@ -19,7 +19,6 @@ const DefaultListPage = ({ children }): JSX.Element => (
         <Datagrid
             bulkActionButtons={<BulkActionToolbar />}
         >
-            <TextField source='id' />
             <TextField source='name' />
             <TextField source='description' />
             <DateField source='lastModified' />

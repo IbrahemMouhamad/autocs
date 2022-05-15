@@ -11,20 +11,16 @@ package org.autocs.core.testbeds;
 
 import java.util.List;
 import java.util.Map;
-
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
-import org.autocs.core.deserializer.ScenarioHolderDeserializer;
 import org.cloudbus.cloudsim.brokers.DatacenterBroker;
 import org.cloudbus.cloudsim.cloudlets.Cloudlet;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.datacenters.Datacenter;
 import org.cloudbus.cloudsim.vms.Vm;
+
+import org.autocs.core.model.Scenario;
+import org.autocs.core.resolver.ScenarioHolderResolver;
 
 /**
  * A java class to hold an experiment scenario
@@ -46,11 +42,9 @@ public class ScenarioHolder {
         this.cloudletsToBrokerMap = new HashMap<>();
     }
 
-    public static ScenarioHolder read(File inputFile, CloudSim simulation) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        DeserializationContext context = mapper.getDeserializationContext();
-        ScenarioHolderDeserializer scenarioDeserializer = new ScenarioHolderDeserializer(simulation);
-        return scenarioDeserializer.convert(mapper.readTree(inputFile), context);
+    public static ScenarioHolder resolve(final Scenario scenarioEntity, CloudSim simulation) {
+        ScenarioHolderResolver scenarioHolderResolver = new ScenarioHolderResolver(simulation);
+        return scenarioHolderResolver.resolve(scenarioEntity);
     }
 
     public void addDatacenter(final String name, final Datacenter datacenter) {

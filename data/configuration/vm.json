@@ -28,13 +28,15 @@
             "required": true
         },
         "cloudletScheduler": {
-            "description": "The virtual machine's scheduling policy",
+            "description": "The virtual machine's scheduling policy to run its cloudlets",
             "type": "select",
-            "defaultValue": "SpaceShared",
+            "defaultValue": "CompletelyFair",
             "required": true,
             "multiple": false,
             "options": [
-                "SpaceShared"
+                "SpaceShared",
+                "TimeShared",
+                "CompletelyFair"
             ]
         }
     }

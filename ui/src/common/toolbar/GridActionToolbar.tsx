@@ -3,17 +3,24 @@
 // SPDX-License-Identifier: MIT
 
 import React from 'react';
+import InfoIcon from '@mui/icons-material/Info';
 import {
     EditButton,
 } from 'react-admin';
-import InfoModal from '../InfoModal';
+import DefaultModal from '../DefaultModal';
 
-const GridActionToolbar = ({ children = undefined, DetailsComponent }): JSX.Element => (
-    <>
-        <InfoModal><DetailsComponent /></InfoModal>
-        <EditButton />
-        {children}
-    </>
-);
+const GridActionToolbar = ({ DetailsComponent, ...props }): JSX.Element => {
+    const { children } = props;
+
+    return (
+        <>
+            <DefaultModal icon={<InfoIcon />} action='action.info'>
+                <DetailsComponent />
+            </DefaultModal>
+            <EditButton />
+            {children}
+        </>
+    );
+};
 
 export default GridActionToolbar;

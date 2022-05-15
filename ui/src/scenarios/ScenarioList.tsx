@@ -3,12 +3,30 @@
 // SPDX-License-Identifier: MIT
 
 import React from 'react';
+import {
+    SingleFieldList,
+    ChipField,
+    ArrayField,
+    ReferenceField,
+} from 'react-admin';
 import { DefaultListPage, GridActionToolbar } from '../common';
 import { EntityDetails } from '../entities';
 
+import RunButton from './buttons/RunButton';
+
 const ScenarioList = (): JSX.Element => (
     <DefaultListPage>
-        <GridActionToolbar DetailsComponent={EntityDetails} />
+        <ReferenceField source='provider.id' reference='providers'>
+            <ChipField source='name' />
+        </ReferenceField>
+        <ArrayField source='brokers'>
+            <SingleFieldList resource='brokers'>
+                <ChipField source='name' />
+            </SingleFieldList>
+        </ArrayField>
+        <GridActionToolbar DetailsComponent={EntityDetails}>
+            <RunButton />
+        </GridActionToolbar>
     </DefaultListPage>
 );
 

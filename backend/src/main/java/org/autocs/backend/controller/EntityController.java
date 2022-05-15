@@ -21,8 +21,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.autocs.backend.model.Entity;
-import org.autocs.backend.service.EntityService;
+
+import org.autocs.core.service.EntityService;
+import org.autocs.core.model.Entity;
 
 /**
  * Entities endpoint

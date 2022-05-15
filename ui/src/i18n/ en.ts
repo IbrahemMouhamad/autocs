@@ -20,12 +20,18 @@ const en = {
     resources: {
         providers: {
             name: 'Provider |||| Providers',
-            fields: entityFields,
+            fields: {
+                ...entityFields,
+                datacenters: 'Owned Datacenters',
+            },
             helpText: entityHelpText,
         },
         datacenters: {
             name: 'Datacenter |||| Datacenters',
-            fields: entityFields,
+            fields: {
+                ...entityFields,
+                hosts: 'Included Hosts',
+            },
             helpText: entityHelpText,
         },
         hosts: {
@@ -35,7 +41,11 @@ const en = {
         },
         brokers: {
             name: 'Broker |||| Brokers',
-            fields: entityFields,
+            fields: {
+                ...entityFields,
+                vms: 'Owned Virtual Machines',
+                cloudlets: 'Cloudlets (Workload)',
+            },
             helpText: entityHelpText,
         },
         vms: {
@@ -60,14 +70,16 @@ const en = {
         scenarios: {
             name: 'Scenario |||| Scenarios',
             fields: {
-                id: 'Identifier',
-                name: 'Name',
-                description: 'Description',
+                entityFields,
                 runs: 'Number of Iterations',
                 entities: {
                     id: 'Instance',
                     amount: 'Amount',
                 },
+                provider: {
+                    id: 'Service Provider',
+                },
+                brokers: 'Brokers (Customers)',
             },
             helpText: {
                 name: 'A name referring to the scenario',
@@ -78,6 +90,11 @@ const en = {
                     amount: 'The amount of the instance to be added',
                 },
             },
+        },
+        runs: {
+            name: 'Experiment Run |||| Experiment Runs',
+            fields: entityFields,
+            helpText: entityHelpText,
         },
     },
     menu: {
@@ -126,12 +143,22 @@ const en = {
             tabs: {
                 providers: 'Provider Configuration',
             },
+            action: {
+                run: 'Run This Scenario',
+            },
+        },
+        run: {
+            create: {
+                title: ': Run',
+                save: 'Run',
+            },
         },
     },
     action: {
         run: 'Run',
         back: 'back',
         new: 'Add New',
+        info: 'Show More Info',
     },
 };
 

@@ -11,7 +11,7 @@ import FormTab from './FormTab';
 
 import InputHelpIcon, { IconWithTooltip } from './InputHelpTooltip';
 
-import InfoModal from './InfoModal';
+import DefaultModal from './DefaultModal';
 
 export {
     JsonFieldItem,
@@ -20,7 +20,7 @@ export {
     Accordion, useAccordionStyles,
     InputHelpIcon, IconWithTooltip,
     FormTab,
-    InfoModal,
+    DefaultModal,
 };
 
 export * from './inputs';

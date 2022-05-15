@@ -19,7 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since Backend Server 1.0.0
  */
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = { "org.autocs.core", "org.autocs.engine" })
 public class EngineApplication {
     public static void main(String[] args) {
         SpringApplication.run(EngineApplication.class, args);

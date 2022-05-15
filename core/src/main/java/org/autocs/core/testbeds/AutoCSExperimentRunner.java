@@ -24,9 +24,12 @@ import org.cloudsimplus.testbeds.ExperimentRunner;
 
 import static java.util.stream.Collectors.toCollection;
 
+import org.autocs.core.model.RunningExperiment;
+import org.autocs.core.model.Scenario;
+
 public class AutoCSExperimentRunner extends ExperimentRunner<AutoCSExperiment> {
 
-    private final File inputFile;
+    private final Scenario scenarioEntity;
     private final String outputDirectory;
     private List<String> enabledMetricsName;
 
@@ -39,44 +42,33 @@ public class AutoCSExperimentRunner extends ExperimentRunner<AutoCSExperiment> {
             "Waiting Vms", "Wait Time", "Completion Time", "Host Cpu Utilization", "Vm Cpu Utilization",
             "Active Hosts Number", "Power Consumption", "Processed Load" };
 
-    public AutoCSExperimentRunner(final long baseSeed, final int runs, final File inputFile,
-            final String outputDirectory) {
-        super(baseSeed, runs);
-        this.inputFile = inputFile;
-        this.outputDirectory = outputDirectory;
+    public AutoCSExperimentRunner(final long baseSeed, final RunningExperiment runningExperiment) {
+        super(baseSeed, (int) runningExperiment.getProperties().get("numberOfRuns"));
+        this.scenarioEntity = runningExperiment.getScenario();
+        this.outputDirectory = runningExperiment.getOutputPath();
     }
 
     @Override
     protected AutoCSExperiment createExperimentInternal(int index) {
-        AutoCSExperiment exp;
-        try {
-            exp = new AutoCSExperiment(index, this, inputFile);
-            exp.setAfterExperimentFinish(this::afterExperimentFinish);
-            return exp;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        AutoCSExperiment exp = new AutoCSExperiment(index, this, scenarioEntity);
+        exp.setAfterExperimentFinish(this::afterExperimentFinish);
+        return exp;
     }
 
     @Override
     public void run() {
         // redirect standard out to file.
-        PrintStream OutputFile;
+        // PrintStream OutputFile;
+        // OutputFile = new PrintStream(this.outputDirectory + File.separator +
+        // "output.log");
+        // System.setOut(OutputFile);
+        // redirect standard err to file.
+        // PrintStream errorFile = new PrintStream(this.outputDirectory + File.separator
+        // + "error.log");
+        // System.setErr(errorFile);
+        super.run();
         try {
-            OutputFile = new PrintStream(this.outputDirectory + File.separator + "output.log");
-            System.setOut(OutputFile);
-            // redirect standard err to file.
-            PrintStream errorFile = new PrintStream(this.outputDirectory + File.separator + "error.log");
-            System.setErr(errorFile);
-            super.run();
             this.computeAndExportMetrics();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (StreamWriteException e) {
-            e.printStackTrace();
-        } catch (DatabindException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
