@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Button,
     useTranslate,
@@ -10,8 +10,13 @@ import {
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
-const DefaultModal = ({ children, icon, action }): JSX.Element => {
-    const [open, setOpen] = useState(false);
+const DefaultModal = ({
+    children,
+    icon,
+    action,
+    open,
+    setOpen,
+}): JSX.Element => {
     const translate = useTranslate();
 
     const handleClick = (): void => {

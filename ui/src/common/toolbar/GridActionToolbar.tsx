@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-import React from 'react';
+import React, { useState } from 'react';
 import InfoIcon from '@mui/icons-material/Info';
 import {
     EditButton,
@@ -10,11 +10,17 @@ import {
 import DefaultModal from '../DefaultModal';
 
 const GridActionToolbar = ({ DetailsComponent, ...props }): JSX.Element => {
+    const [showInfo, setShowInfo] = useState(false);
     const { children } = props;
 
     return (
         <>
-            <DefaultModal icon={<InfoIcon />} action='action.info'>
+            <DefaultModal
+                icon={<InfoIcon />}
+                action='action.info'
+                open={showInfo}
+                setOpen={setShowInfo}
+            >
                 <DetailsComponent />
             </DefaultModal>
             <EditButton />
