@@ -159,6 +159,7 @@ const en = {
         back: 'back',
         new: 'Add New',
         info: 'Show More Info',
+        continue: 'Continue',
     },
 };
 
