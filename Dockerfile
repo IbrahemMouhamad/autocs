@@ -6,7 +6,7 @@ FROM maven:3.8.5-openjdk-17 AS build-image
 
 COPY core /tmp/core/
 WORKDIR /tmp/core
-RUN mvn clean install -Dmaven.test.skip
+RUN mvn clean install
 
 COPY backend /tmp/backend/
 WORKDIR /tmp/backend

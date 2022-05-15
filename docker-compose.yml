@@ -13,7 +13,20 @@ services:
             - traefik.http.routers.autocs.rule=Host(`${AUTOCS_HOST:-localhost}`) && PathPrefix(`/api/`)
             - traefik.http.routers.autocs.entrypoints=web
         volumes:
-            - autocs_data:/tmp/data
+            - ./data/:/tmp/data
+            - autocs_workspace:/tmp/workspace
+            - autocs_logs:/tmp/logs
+        networks:
+            - autocs
+
+    autocs_engine:
+        container_name: autocs_engine
+        image: autocs/autocs_engine
+        restart: always
+        depends_on:
+            - rabbitmq
+        volumes:
+            - ./data/:/tmp/data
             - autocs_workspace:/tmp/workspace
             - autocs_logs:/tmp/logs
         networks:
@@ -63,10 +76,10 @@ services:
         ports:
             - "5672:5672"
             - "15672:15672"
+        networks:
+            - autocs
 
 volumes:
-    autocs_db:
-    autocs_data:
     autocs_workspace:
     autocs_logs:
 

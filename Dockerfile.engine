@@ -13,7 +13,8 @@ WORKDIR /tmp/engine
 RUN mvn clean install -Pprod
 
 FROM openjdk:17-slim-buster AS autocs_engine
-COPY --from=build-image /tmp/engine/target/engine-0.0.1 app.jar
+COPY --from=build-image /tmp/engine/target/engine-0.0.1.jar app.jar
+COPY data /tmp/data/
 
 RUN sh -c 'touch /app.jar'
 

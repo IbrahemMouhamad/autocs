@@ -9,6 +9,11 @@ services:
         build:
             context: .
 
+    autocs_engine:
+        build:
+            context: .
+            dockerfile: Dockerfile.engine
+
     autocs_ui:
         build:
             context: .
