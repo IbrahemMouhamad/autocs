@@ -4,20 +4,31 @@
 
 import React from 'react';
 import {
-    Create,
+    Create, SaveButton, Toolbar,
 } from 'react-admin';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 import { CreatePageToolbar } from '../common';
 
 import ScenarioForm from './ScenarioForm';
 
+const ScenarioCreateToolbar = (props): JSX.Element => (
+    <Toolbar {...props}>
+        <SaveButton
+            label='action.continue'
+            icon={<ArrowRightIcon />}
+        />
+    </Toolbar>
+);
+
 const ScenarioCreate = (props): JSX.Element => (
     <Create
         actions={<CreatePageToolbar />}
         redirect='edit'
+        mutationMode='pessimistic'
         {...props}
     >
-        <ScenarioForm {...props} />
+        <ScenarioForm toolbar={<ScenarioCreateToolbar />} {...props} />
     </Create>
 );
 

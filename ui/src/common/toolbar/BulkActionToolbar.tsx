@@ -7,7 +7,7 @@ import { BulkDeleteButton } from 'react-admin';
 
 const BulkActionToolbar = ({ children = undefined }): JSX.Element => (
     <>
-        <BulkDeleteButton mutationMode='optimistic' />
+        <BulkDeleteButton mutationMode='pessimistic' />
         {children}
     </>
 );

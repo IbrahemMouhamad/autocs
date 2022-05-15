@@ -9,9 +9,10 @@ import {
 
 import RunForm from './RunForm';
 
-const RunCreate = ({ scenario, ...props }): JSX.Element => (
+const RunCreate = ({ scenario, mutationOptions, ...props }): JSX.Element => (
     <Create
         title='label.run.create.title'
+        mutationOptions={mutationOptions}
         {...props}
     >
         <RunForm scenario={scenario} />

@@ -15,6 +15,7 @@ const ScenarioEdit = (props): JSX.Element => (
     <Edit
         actions={<EditPageToolbar />}
         redirect='list'
+        mutationMode='pessimistic'
         {...props}
     >
         <ScenarioForm {...props} />
