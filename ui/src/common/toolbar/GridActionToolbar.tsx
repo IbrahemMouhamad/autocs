@@ -11,19 +11,29 @@ import DefaultModal from '../DefaultModal';
 
 const GridActionToolbar = ({ DetailsComponent, ...props }): JSX.Element => {
     const [showInfo, setShowInfo] = useState(false);
-    const { children } = props;
+    const { children, hasEdit } = props;
 
     return (
         <>
-            <DefaultModal
-                icon={<InfoIcon />}
-                action='action.info'
-                open={showInfo}
-                setOpen={setShowInfo}
-            >
-                <DetailsComponent />
-            </DefaultModal>
-            <EditButton />
+            {
+                DetailsComponent &&
+                (
+                    <DefaultModal
+                        icon={<InfoIcon />}
+                        action='action.info'
+                        open={showInfo}
+                        setOpen={setShowInfo}
+                    >
+                        <DetailsComponent />
+                    </DefaultModal>
+                )
+            }
+            {
+                hasEdit &&
+                (
+                    <EditButton />
+                )
+            }
             {children}
         </>
     );

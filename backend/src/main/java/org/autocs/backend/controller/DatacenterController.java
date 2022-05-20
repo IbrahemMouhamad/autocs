@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.autocs.core.service.DatacenterService;
-import org.autocs.core.model.Datacenter;
+import org.autocs.core.model.DatacenterModel;
 
 /**
  * Datacenters endpoint
@@ -39,23 +39,23 @@ public class DatacenterController {
     private DatacenterService datacenterService;
 
     @GetMapping("/datacenters")
-    public List<Datacenter> list() throws Exception {
+    public List<DatacenterModel> list() throws Exception {
         return datacenterService.list("datacenters");
     }
 
     @GetMapping("/datacenters/{id}")
-    public Datacenter get(@PathVariable String id) throws Exception {
+    public DatacenterModel get(@PathVariable String id) throws Exception {
         return datacenterService.getById("datacenters", id);
     }
 
     @PostMapping("/datacenters")
     @ResponseStatus(HttpStatus.CREATED)
-    public Datacenter create(@RequestBody Datacenter newEntity) throws Exception {
+    public DatacenterModel create(@RequestBody DatacenterModel newEntity) throws Exception {
         return datacenterService.create("datacenters", newEntity);
     }
 
     @PutMapping("/datacenters/{id}")
-    public Datacenter update(@RequestBody Datacenter newEntity) throws Exception {
+    public DatacenterModel update(@RequestBody DatacenterModel newEntity) throws Exception {
         return datacenterService.update("datacenters", newEntity);
     }
 

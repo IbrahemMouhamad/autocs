@@ -10,9 +10,12 @@
 package org.autocs.engine.service;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.autocs.core.model.RunningExperiment;
-import org.autocs.core.testbeds.AutoCSExperimentRunner;
+import org.autocs.core.experiment.AutoCSExperimentRunner;
+import org.autocs.core.model.ScenarioRun;
 
 /**
  * Experiment run service to receive run request from RabbitQM runs queue
@@ -25,9 +28,25 @@ import org.autocs.core.testbeds.AutoCSExperimentRunner;
 @Service
 public class ExperimentRunnerService {
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Value("${spring.rabbitmq.results_exchange}")
+    private String exchange;
+
+    @Value("${spring.rabbitmq.results_routingkey}")
+    private String routingKey;
+
+    public void sendResult(ScenarioRun scenarioRun) {
+        rabbitTemplate.convertAndSend(exchange, routingKey, scenarioRun);
+    }
+
     @RabbitListener(queues = "${spring.rabbitmq.queue}")
-    public void run(RunningExperiment experimentRun) {
-        AutoCSExperimentRunner runner = new AutoCSExperimentRunner(9075098589732L, experimentRun);
+    public void run(ScenarioRun scenarioRun) {
+        AutoCSExperimentRunner runner = new AutoCSExperimentRunner(9075098589732L, scenarioRun);
+        // run scenario
         runner.setVerbose(true).run();
+        // return results
+        sendResult(scenarioRun);
     }
 }

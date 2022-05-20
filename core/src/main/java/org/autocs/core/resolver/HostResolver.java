@@ -47,6 +47,7 @@ public class HostResolver {
                         PolicyLoader.newResourceProvisioner((String) hostEntity.getProperties().get("bwProvisioner")))
                 .setVmScheduler(
                         PolicyLoader.vmScheduler((String) hostEntity.getProperties().get("vmScheduler")));
+        host.enableUtilizationStats();
         return host;
     }
 

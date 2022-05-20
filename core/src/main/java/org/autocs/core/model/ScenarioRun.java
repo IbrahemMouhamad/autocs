@@ -14,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import org.autocs.core.serializer.RunningExperimentSerializer;
+import org.autocs.core.metrics.Metrics;
+import org.autocs.core.serializer.ScenarioRunSerializer;
 import org.autocs.core.service.EntityService;
 
 /**
@@ -26,11 +27,12 @@ import org.autocs.core.service.EntityService;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_DEFAULT)
-@JsonSerialize(using = RunningExperimentSerializer.class)
-public class RunningExperiment extends Entity {
+@JsonSerialize(using = ScenarioRunSerializer.class)
+public class ScenarioRun extends Entity {
     private Scenario scenario;
     private Boolean isRunning = false;
     private String outputPath;
+    private Metrics metrics;
 
     public Scenario getScenario() {
         return scenario;
@@ -59,5 +61,13 @@ public class RunningExperiment extends Entity {
     public void loadScenario(EntityService<Scenario> entityService) {
         Scenario scenario = entityService.getById("scenarios", this.getScenario().getId());
         this.setScenario(scenario);
+    }
+
+    public Metrics getMetrics() {
+        return metrics;
+    }
+
+    public void setMetrics(Metrics metrics) {
+        this.metrics = metrics;
     }
 }

@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 import React from 'react';
-import { FormDataConsumer, required } from 'react-admin';
+import { FormDataConsumer } from 'react-admin';
 
 import { ArrayInputView } from '../common';
 
@@ -15,7 +15,6 @@ const EntityAssignmentForm = (props): JSX.Element => {
     return (
         <ArrayInputView
             {...props}
-            validate={required()}
         >
             <FormDataConsumer>
                 {({ getSource }) => getSource && (

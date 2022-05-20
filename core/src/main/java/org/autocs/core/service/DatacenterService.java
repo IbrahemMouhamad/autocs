@@ -9,7 +9,7 @@
 
 package org.autocs.core.service;
 
-import org.autocs.core.model.Datacenter;
+import org.autocs.core.model.DatacenterModel;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class DatacenterService extends EntityService<Datacenter> {
+public class DatacenterService extends EntityService<DatacenterModel> {
     public DatacenterService() {
-        super.setType(Datacenter.class);
+        super.setType(DatacenterModel.class);
     }
 }

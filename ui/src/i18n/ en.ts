@@ -152,6 +152,35 @@ const en = {
                 title: ': Run',
                 save: 'Run',
             },
+            metrics: {
+                time: 'Time',
+                time_unit: 'sec',
+                cpu: {
+                    requested: 'Requested',
+                    allocated: 'Allocated',
+                    mips_label: 'Million Instructions Per Second',
+                    mips_unit: 'MIPS',
+                    percentage: 'Percentage',
+                    percentage_unit: '%',
+                    usage_title: 'CPU Usage Percentage',
+                    resource_title: 'CPU Resources Allocation',
+                },
+                ram: {
+                    label: 'Utilization',
+                    unit: 'MB',
+                    title: 'RAM Utilization',
+                },
+                bw: {
+                    label: 'Utilization',
+                    unit: 'MB',
+                    title: 'Bandwidth Utilization',
+                },
+                activeHosts: {
+                    label: 'Active Hosts',
+                    unit: '#',
+                    title: 'Active Hosts Number',
+                },
+            },
         },
     },
     action: {

@@ -12,6 +12,7 @@ import CameraRollIcon from '@mui/icons-material/CameraRoll';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import BusinessIcon from '@mui/icons-material/Business';
 import BiotechIcon from '@mui/icons-material/Biotech';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 export default {
     entities: ConstructionIcon,
@@ -24,4 +25,5 @@ export default {
     brokers: ManageAccountsIcon,
     providers: BusinessIcon,
     experiments: BiotechIcon,
+    runs: RocketLaunchIcon,
 };

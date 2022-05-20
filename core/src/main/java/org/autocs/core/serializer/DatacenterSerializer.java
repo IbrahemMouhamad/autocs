@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.autocs.core.service.EntityService;
-import org.autocs.core.model.Datacenter;
+import org.autocs.core.model.DatacenterModel;
 import org.autocs.core.model.Entity;
 
 /**
@@ -27,17 +27,18 @@ import org.autocs.core.model.Entity;
  * @since Backend Server 1.0.0
  */
 
-public class DatacenterSerializer extends StdSerializer<Datacenter> {
+public class DatacenterSerializer extends StdSerializer<DatacenterModel> {
 
     @Autowired
     private EntityService<Entity> entityService;
 
     public DatacenterSerializer() {
-        super(Datacenter.class);
+        super(DatacenterModel.class);
     }
 
     @Override
-    public void serialize(Datacenter datacenter, JsonGenerator gen, SerializerProvider provider) throws IOException {
+    public void serialize(DatacenterModel datacenter, JsonGenerator gen, SerializerProvider provider)
+            throws IOException {
         gen.writeStartObject();
         gen.writeStringField("id", datacenter.getId());
         gen.writeStringField("name", datacenter.getName());

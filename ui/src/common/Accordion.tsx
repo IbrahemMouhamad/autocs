@@ -39,6 +39,7 @@ const Accordion = ({
     ...rest
 }): JSX.Element => {
     const classes = useAccordionStyles();
+    const { detailsClass } = rest;
 
     return (
         <MUIAccordion
@@ -55,7 +56,7 @@ const Accordion = ({
                     <Typography className={classes.heading}>{headingText}</Typography>
                 </div>
             </AccordionSummary>
-            <AccordionDetails className={classes.details}>
+            <AccordionDetails className={detailsClass || classes.details}>
                 {children}
             </AccordionDetails>
         </MUIAccordion>

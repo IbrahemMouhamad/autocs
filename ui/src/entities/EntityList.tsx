@@ -27,7 +27,7 @@ const EntityList = (props): JSX.Element => {
                     </ArrayField>
                 )
             }
-            <GridActionToolbar DetailsComponent={EntityDetails} />
+            <GridActionToolbar DetailsComponent={EntityDetails} hasEdit />
         </DefaultListPage>
     );
 };

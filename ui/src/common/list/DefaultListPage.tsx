@@ -12,19 +12,24 @@ import {
 
 import { ListPageToolbar, BulkActionToolbar } from '../toolbar';
 
-const DefaultListPage = ({ children }): JSX.Element => (
-    <List
-        actions={<ListPageToolbar />}
-    >
-        <Datagrid
-            bulkActionButtons={<BulkActionToolbar />}
+const DefaultListPage = (props): JSX.Element => {
+    const { rowClick, children } = props;
+
+    return (
+        <List
+            actions={<ListPageToolbar />}
         >
-            <TextField source='name' />
-            <TextField source='description' />
-            <DateField source='lastModified' />
-            {children}
-        </Datagrid>
-    </List>
-);
+            <Datagrid
+                rowClick={rowClick}
+                bulkActionButtons={<BulkActionToolbar />}
+            >
+                <TextField source='name' />
+                <TextField source='description' />
+                <DateField source='lastModified' />
+                {children}
+            </Datagrid>
+        </List>
+    );
+};
 
 export default DefaultListPage;

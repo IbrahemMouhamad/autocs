@@ -6,10 +6,14 @@ import { ResourceProps } from 'react-admin';
 import icons from '../icons';
 
 import RunCreate from './RunCreate';
+import RunList from './RunList';
+import RunShow from './RunShow';
 
 const RunResourceProps: ResourceProps = {
     name: 'runs',
-    icon: icons.configurations,
+    list: RunList,
+    show: RunShow,
+    icon: icons.runs,
 };
 
 export {

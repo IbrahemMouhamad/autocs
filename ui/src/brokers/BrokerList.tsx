@@ -23,7 +23,7 @@ const BrokerList = (): JSX.Element => (
                 <ChipField source='name' />
             </SingleFieldList>
         </ArrayField>
-        <GridActionToolbar DetailsComponent={EntityDetails} />
+        <GridActionToolbar DetailsComponent={EntityDetails} hasEdit />
     </DefaultListPage>
 );
 

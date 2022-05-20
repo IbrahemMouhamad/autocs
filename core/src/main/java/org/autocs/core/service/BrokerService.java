@@ -9,7 +9,7 @@
 
 package org.autocs.core.service;
 
-import org.autocs.core.model.Broker;
+import org.autocs.core.model.BrokerModel;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class BrokerService extends EntityService<Broker> {
+public class BrokerService extends EntityService<BrokerModel> {
     public BrokerService() {
-        super.setType(Broker.class);
+        super.setType(BrokerModel.class);
     }
 }

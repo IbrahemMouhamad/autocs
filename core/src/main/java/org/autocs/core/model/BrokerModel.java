@@ -33,7 +33,7 @@ import static org.autocs.core.utils.HumanizingUtils.MBHumanizing;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_DEFAULT)
 @JsonSerialize(using = BrokerSerializer.class)
-public class Broker extends Entity {
+public class BrokerModel extends Entity {
     // vm statistics
     private int VmsNumber;
     private long totalVmPES;

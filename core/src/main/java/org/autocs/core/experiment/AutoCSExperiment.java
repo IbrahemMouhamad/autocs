@@ -7,7 +7,7 @@
  * Email: ibrahem.y.mouhamad@gmail.com
  */
 
-package org.autocs.core.testbeds;
+package org.autocs.core.experiment;
 
 import java.util.Comparator;
 import java.util.List;
@@ -24,22 +24,23 @@ import org.cloudsimplus.testbeds.ExperimentRunner;
 import static java.util.Comparator.comparingDouble;
 
 import org.autocs.core.model.Scenario;
+import org.autocs.core.resolver.ScenarioResolver;
 
 public class AutoCSExperiment extends Experiment {
 
-    private final ScenarioHolder scenario;
+    private final ScenarioResolver scenarioResolver;
 
-    public AutoCSExperiment(int index, ExperimentRunner<AutoCSExperiment> runner, final Scenario scenarioEntity) {
+    public AutoCSExperiment(int index, ExperimentRunner<AutoCSExperiment> runner, final Scenario scenario) {
         super(index, runner);
-        this.scenario = ScenarioHolder.resolve(scenarioEntity, this.getSimulation());
-        this.setDatacentersNumber(scenario.getDatacenterList().size());
-        this.setBrokersNumber(scenario.getBrokerList().size());
-        setVmsByBrokerFunction(broker -> scenario.getVmsNumberPerBroker(broker));
+        scenarioResolver = new ScenarioResolver(this.getSimulation(), scenario);
+        this.setDatacentersNumber(scenarioResolver.getDatacenters().size());
+        this.setBrokersNumber(scenarioResolver.getBrokers().size());
+        setVmsByBrokerFunction(broker -> scenarioResolver.getVmsNumberPerBroker(broker));
     }
 
     @Override
     protected Datacenter createDatacenter(final int index) {
-        return scenario.getDatacenterList().get(index);
+        return scenarioResolver.getDatacenters().get(index);
     }
 
     @Override
@@ -48,18 +49,18 @@ public class AutoCSExperiment extends Experiment {
             throw new IllegalStateException("The number of brokers to create was not set");
         }
         for (int i = 0; i < this.getBrokersNumber(); i++) {
-            this.getBrokerList().add(scenario.getBrokerList().get(i));
+            this.getBrokerList().add(scenarioResolver.getBrokers().get(i));
         }
     }
 
     @Override
     protected List<Vm> createVms(final DatacenterBroker broker) {
-        return scenario.getVmsListPerBroker(broker);
+        return scenarioResolver.getVmsListPerBroker(broker);
     }
 
     @Override
     protected List<Cloudlet> createCloudlets(DatacenterBroker broker) {
-        return scenario.getCloudletsListPerBroker(broker);
+        return scenarioResolver.getCloudletsListPerBroker(broker);
     }
 
     @Override
@@ -96,9 +97,5 @@ public class AutoCSExperiment extends Experiment {
     @Override
     protected DatacenterBroker createBroker() {
         return null;
-    }
-
-    public ScenarioHolder getScenario() {
-        return scenario;
     }
 }

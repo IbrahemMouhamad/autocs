@@ -40,7 +40,7 @@ public class Provider extends Entity {
     private long totalMIPS;
     private long totalRAM;
     private long totalStorage;
-    List<Datacenter> datacenters = new ArrayList<>();
+    List<DatacenterModel> datacenters = new ArrayList<>();
 
     public int getDatacentersNumber() {
         return datacentersNumber;
@@ -90,17 +90,17 @@ public class Provider extends Entity {
         this.totalStorage = totalStorage;
     }
 
-    public List<Datacenter> getDatacenters() {
+    public List<DatacenterModel> getDatacenters() {
         return datacenters;
     }
 
-    public void setDatacenters(List<Datacenter> datacenters) {
+    public void setDatacenters(List<DatacenterModel> datacenters) {
         this.datacenters = datacenters;
     }
 
-    public void loadDatacenter(EntityService<Datacenter> entityService) {
+    public void loadDatacenter(EntityService<DatacenterModel> entityService) {
         for (int i = 0; i < this.getDatacenters().size(); i++) {
-            Datacenter datacenter = entityService.getById("datacenters", this.getDatacenters().get(i).getId());
+            DatacenterModel datacenter = entityService.getById("datacenters", this.getDatacenters().get(i).getId());
             datacenter.setAmount(this.getDatacenters().get(i).getAmount());
             // collect statistics
             this.collectStatistics(datacenter);
@@ -109,7 +109,7 @@ public class Provider extends Entity {
         this.loadStatistics();
     }
 
-    private void collectStatistics(Datacenter datacenter) {
+    private void collectStatistics(DatacenterModel datacenter) {
         this.setDatacentersNumber(this.getDatacentersNumber() + datacenter.getAmount());
         this.setHostsNumber(this.getHostsNumber()
                 + (datacenter.getAmount() * datacenter.getHostsNumber()));

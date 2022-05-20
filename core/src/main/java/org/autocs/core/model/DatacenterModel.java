@@ -33,7 +33,7 @@ import static org.autocs.core.utils.HumanizingUtils.MBHumanizing;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(value = Include.NON_DEFAULT)
 @JsonSerialize(using = DatacenterSerializer.class)
-public class Datacenter extends Entity {
+public class DatacenterModel extends Entity {
     private int hostsNumber;
     private long totalPES;
     private long totalMIPS;

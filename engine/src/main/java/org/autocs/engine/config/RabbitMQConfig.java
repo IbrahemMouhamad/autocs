@@ -38,10 +38,10 @@ public class RabbitMQConfig {
     @Value("${spring.rabbitmq.queue}")
     private String queue;
 
-    @Value("${spring.rabbitmq.exchange}")
+    @Value("${spring.rabbitmq.runs_exchange}")
     private String exchange;
 
-    @Value("${spring.rabbitmq.routingkey}")
+    @Value("${spring.rabbitmq.runs_routingkey}")
     private String routingKey;
 
     @Value("${spring.rabbitmq.username}")

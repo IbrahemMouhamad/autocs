@@ -24,7 +24,7 @@ const ScenarioList = (): JSX.Element => (
                 <ChipField source='name' />
             </SingleFieldList>
         </ArrayField>
-        <GridActionToolbar DetailsComponent={EntityDetails}>
+        <GridActionToolbar DetailsComponent={EntityDetails} hasEdit>
             <RunButton />
         </GridActionToolbar>
     </DefaultListPage>

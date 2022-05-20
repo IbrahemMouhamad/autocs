@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.autocs.core.service.EntityService;
-import org.autocs.core.model.RunningExperiment;
+import org.autocs.core.model.ScenarioRun;
 import org.autocs.core.model.Scenario;
 
 /**
@@ -27,17 +27,17 @@ import org.autocs.core.model.Scenario;
  * @since Backend Server 1.0.0
  */
 
-public class RunningExperimentSerializer extends StdSerializer<RunningExperiment> {
+public class ScenarioRunSerializer extends StdSerializer<ScenarioRun> {
 
     @Autowired
     private EntityService<Scenario> scenarioService;
 
-    public RunningExperimentSerializer() {
-        super(RunningExperiment.class);
+    public ScenarioRunSerializer() {
+        super(ScenarioRun.class);
     }
 
     @Override
-    public void serialize(RunningExperiment experimentRun, JsonGenerator gen, SerializerProvider provider)
+    public void serialize(ScenarioRun experimentRun, JsonGenerator gen, SerializerProvider provider)
             throws IOException {
         gen.writeStartObject();
         gen.writeStringField("id", experimentRun.getId());
@@ -53,7 +53,7 @@ public class RunningExperimentSerializer extends StdSerializer<RunningExperiment
             experimentRun.loadScenario(scenarioService);
         }
         gen.writeObjectField("scenario", experimentRun.getScenario());
-        gen.writeObjectField("statistics", experimentRun.getStatistics());
+        gen.writeObjectField("metrics", experimentRun.getMetrics());
         gen.writeEndObject();
     }
 }

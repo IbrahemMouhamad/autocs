@@ -9,20 +9,15 @@
 
 package org.autocs.backend.service;
 
-import org.autocs.core.model.RunningExperiment;
+import java.io.IOException;
+
+import org.autocs.core.model.ScenarioRun;
+import org.autocs.core.service.ScenarioRunService;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.io.IOException;
-
-import com.fasterxml.jackson.core.exc.StreamWriteException;
-import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.SerializationFeature;
-
-import org.autocs.core.service.EntityService;
 
 /**
  * Running Experiment service
@@ -37,13 +32,25 @@ public class MessageService {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Value("${spring.rabbitmq.exchange}")
+    @Autowired
+    private ScenarioRunService scenarioRunService;
+
+    @Value("${spring.rabbitmq.runs_exchange}")
     private String exchange;
 
-    @Value("${spring.rabbitmq.routingkey}")
+    @Value("${spring.rabbitmq.runs_routingkey}")
     private String routingKey;
 
-    public void sendRunRequest(RunningExperiment newEntity) {
-        rabbitTemplate.convertAndSend(exchange, routingKey, newEntity);
+    public void sendRunRequest(ScenarioRun scenarioRun) {
+        rabbitTemplate.convertAndSend(exchange, routingKey, scenarioRun);
+    }
+
+    @RabbitListener(queues = "${spring.rabbitmq.queue}")
+    public void receiveResult(ScenarioRun scenarioRun) {
+        try {
+            scenarioRunService.update("runs", scenarioRun);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -32,7 +32,7 @@ import org.autocs.core.service.EntityService;
 @JsonSerialize(using = ScenarioSerializer.class)
 public class Scenario extends Entity {
     private Provider provider;
-    List<Broker> brokers = new ArrayList<>();
+    List<BrokerModel> brokers = new ArrayList<>();
 
     public Provider getProvider() {
         return provider;
@@ -42,11 +42,11 @@ public class Scenario extends Entity {
         this.provider = provider;
     }
 
-    public List<Broker> getBrokers() {
+    public List<BrokerModel> getBrokers() {
         return brokers;
     }
 
-    public void setBrokers(List<Broker> brokers) {
+    public void setBrokers(List<BrokerModel> brokers) {
         this.brokers = brokers;
     }
 
@@ -56,9 +56,9 @@ public class Scenario extends Entity {
         this.setStatistics(provider.getStatistics());
     }
 
-    public void loadBrokers(EntityService<Broker> entityService) {
+    public void loadBrokers(EntityService<BrokerModel> entityService) {
         for (int i = 0; i < this.getBrokers().size(); i++) {
-            Broker broker = entityService.getById("brokers", this.getBrokers().get(i).getId());
+            BrokerModel broker = entityService.getById("brokers", this.getBrokers().get(i).getId());
             broker.setAmount(this.getBrokers().get(i).getAmount());
             this.getBrokers().set(i, broker);
         }

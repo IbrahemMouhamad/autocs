@@ -36,6 +36,7 @@ public class VmResolver {
                 .setCloudletScheduler(
                         PolicyLoader
                                 .cloudletScheduler((String) vmEntity.getProperties().get("cloudletScheduler")));
+        vm.enableUtilizationStats();
         return vm;
     }
 }

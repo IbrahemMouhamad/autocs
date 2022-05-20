@@ -18,11 +18,11 @@ import org.cloudbus.cloudsim.brokers.DatacenterBrokerSimple;
 import org.cloudbus.cloudsim.vms.Vm;
 import org.cloudbus.cloudsim.cloudlets.Cloudlet;
 
-import org.autocs.core.model.Broker;
+import org.autocs.core.model.BrokerModel;
 
 /**
  * broker resolver class.
- * It convert presentation of broker using {@link Broker}
+ * It convert presentation of broker using {@link BrokerModel}
  * to {@link DatacenterBroker}
  * object
  *
@@ -42,13 +42,13 @@ public class DatacenterBrokerResolver {
         this.cloudletResolver = new CloudletResolver();
     }
 
-    public DatacenterBroker resolve(Broker brokerEntity) {
+    public DatacenterBroker resolve(BrokerModel brokerEntity) {
         // datacenter broker creation
-        DatacenterBroker broker = new DatacenterBrokerSimple(this.simulation);
+        DatacenterBroker broker = new DatacenterBrokerSimple(this.simulation, brokerEntity.getName());
         return broker;
     }
 
-    public List<Vm> getVmsList(Broker brokerEntity) {
+    public List<Vm> getVmsList(BrokerModel brokerEntity) {
         final List<Vm> vmList = new ArrayList<>();
         brokerEntity.getVms()
                 .forEach(vmEntity -> {
@@ -60,7 +60,7 @@ public class DatacenterBrokerResolver {
         return vmList;
     }
 
-    public List<Cloudlet> getCloudletsList(Broker brokerEntity) {
+    public List<Cloudlet> getCloudletsList(BrokerModel brokerEntity) {
         final List<Cloudlet> cloudletList = new ArrayList<>();
         brokerEntity.getCloudlets()
                 .forEach(cloudletEntity -> {

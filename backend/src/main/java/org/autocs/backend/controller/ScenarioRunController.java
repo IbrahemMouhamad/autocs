@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import org.autocs.core.model.RunningExperiment;
-import org.autocs.core.service.RunningExperimentService;
+import org.autocs.core.model.ScenarioRun;
+import org.autocs.core.service.ScenarioRunService;
 import org.autocs.backend.service.MessageService;
 
 /**
@@ -33,35 +33,35 @@ import org.autocs.backend.service.MessageService;
  */
 
 @RestController
-public class RunningExperimentController {
+public class ScenarioRunController {
 
     @Autowired
-    RunningExperimentService runningExperimentService;
+    ScenarioRunService scenarioRunService;
 
     @Autowired
     MessageService messageService;
 
     @GetMapping("/runs")
-    public List<RunningExperiment> list() throws Exception {
-        return runningExperimentService.list("runs");
+    public List<ScenarioRun> list() throws Exception {
+        return scenarioRunService.list("runs");
     }
 
     @GetMapping("/runs/{id}")
-    public RunningExperiment get(@PathVariable String id) throws Exception {
-        return runningExperimentService.getById("runs", id);
+    public ScenarioRun get(@PathVariable String id) throws Exception {
+        return scenarioRunService.getById("runs", id);
     }
 
     @PostMapping("/runs")
     @ResponseStatus(HttpStatus.CREATED)
-    public RunningExperiment create(@RequestBody RunningExperiment newExperimentRun) throws Exception {
-        newExperimentRun = runningExperimentService.create("runs", newExperimentRun);
+    public ScenarioRun create(@RequestBody ScenarioRun newExperimentRun) throws Exception {
+        newExperimentRun = scenarioRunService.create("runs", newExperimentRun);
         messageService.sendRunRequest(newExperimentRun);
         return newExperimentRun;
     }
 
     @DeleteMapping("/runs/{id}")
     public void delete(@PathVariable String id) throws Exception {
-        runningExperimentService.deleteById("runs", id);
+        scenarioRunService.deleteById("runs", id);
     }
 
 }

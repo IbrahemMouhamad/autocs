@@ -23,6 +23,7 @@ export {
     DefaultModal,
 };
 
-export * from './inputs';
+export * from './chart';
+export * from './input';
 export * from './list';
 export * from './toolbar';

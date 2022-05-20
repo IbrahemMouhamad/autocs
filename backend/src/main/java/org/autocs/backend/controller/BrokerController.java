@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.autocs.core.service.BrokerService;
-import org.autocs.core.model.Broker;
+import org.autocs.core.model.BrokerModel;
 
 /**
  * Brokers (customers) endpoint
@@ -39,23 +39,23 @@ public class BrokerController {
     private BrokerService brokerService;
 
     @GetMapping("/brokers")
-    public List<Broker> list() throws Exception {
+    public List<BrokerModel> list() throws Exception {
         return brokerService.list("brokers");
     }
 
     @GetMapping("/brokers/{id}")
-    public Broker get(@PathVariable String id) throws Exception {
+    public BrokerModel get(@PathVariable String id) throws Exception {
         return brokerService.getById("brokers", id);
     }
 
     @PostMapping("/brokers")
     @ResponseStatus(HttpStatus.CREATED)
-    public Broker create(@RequestBody Broker newEntity) throws Exception {
+    public BrokerModel create(@RequestBody BrokerModel newEntity) throws Exception {
         return brokerService.create("brokers", newEntity);
     }
 
     @PutMapping("/brokers/{id}")
-    public Broker update(@RequestBody Broker newEntity) throws Exception {
+    public BrokerModel update(@RequestBody BrokerModel newEntity) throws Exception {
         return brokerService.update("brokers", newEntity);
     }
 

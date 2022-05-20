@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.autocs.core.service.EntityService;
-import org.autocs.core.model.Broker;
+import org.autocs.core.model.BrokerModel;
 import org.autocs.core.model.Entity;
 
 /**
@@ -27,17 +27,17 @@ import org.autocs.core.model.Entity;
  * @since Backend Server 1.0.0
  */
 
-public class BrokerSerializer extends StdSerializer<Broker> {
+public class BrokerSerializer extends StdSerializer<BrokerModel> {
 
     @Autowired
     private EntityService<Entity> entityService;
 
     public BrokerSerializer() {
-        super(Broker.class);
+        super(BrokerModel.class);
     }
 
     @Override
-    public void serialize(Broker broker, JsonGenerator gen, SerializerProvider provider) throws IOException {
+    public void serialize(BrokerModel broker, JsonGenerator gen, SerializerProvider provider) throws IOException {
         gen.writeStartObject();
         gen.writeStringField("id", broker.getId());
         gen.writeStringField("name", broker.getName());

@@ -122,6 +122,15 @@ const Menu = ({ dense = false }: MenuProps): JSX.Element => {
                     leftIcon={React.createElement(icons.scenarios)}
                     dense={dense}
                 />
+                <MenuItemLink
+                    to='/runs'
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate('resources.runs.name', {
+                        smart_count: 2,
+                    })}
+                    leftIcon={React.createElement(icons.runs)}
+                    dense={dense}
+                />
             </SubMenu>
             <MenuItemLink
                 to='/configurations'

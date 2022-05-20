@@ -22,7 +22,7 @@ import org.autocs.core.loader.PolicyLoader;
 /**
  * datacenter resolver class.
  * It convert presentation of datacenter using
- * {@link org.autocs.backend.model.Datacenter}
+ * {@link org.autocs.DatacenterModel.model.Datacenter}
  * to {@link Datacenter}
  * object
  *
@@ -40,7 +40,7 @@ public class DatacenterResolver {
         this.hostResolver = new HostResolver();
     }
 
-    public Datacenter resolve(org.autocs.core.model.Datacenter datacenterEntity) {
+    public Datacenter resolve(org.autocs.core.model.DatacenterModel datacenterEntity) {
         // resolve hosts
         final List<Host> hostList = new ArrayList<>();
         datacenterEntity.getHosts()
@@ -57,6 +57,9 @@ public class DatacenterResolver {
                 PolicyLoader.vmAllocationPolicy((String) datacenterEntity.getProperties().get("vmAllocationPolicy")));
         datacenter
                 .setSchedulingInterval((int) datacenterEntity.getProperties().get("schedulingInterval"));
+        // enable state history
+        datacenter.enableStateHistory();
+        datacenter.setName(datacenterEntity.getName());
         return datacenter;
     }
 }

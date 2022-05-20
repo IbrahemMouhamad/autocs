@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.autocs.core.service.EntityService;
-import org.autocs.core.model.Datacenter;
+import org.autocs.core.model.DatacenterModel;
 import org.autocs.core.model.Provider;
 
 /**
@@ -30,7 +30,7 @@ import org.autocs.core.model.Provider;
 public class ProviderSerializer extends StdSerializer<Provider> {
 
     @Autowired
-    private EntityService<Datacenter> datacenterService;
+    private EntityService<DatacenterModel> datacenterService;
 
     public ProviderSerializer() {
         super(Provider.class);

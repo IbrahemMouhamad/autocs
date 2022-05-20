@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.autocs.core.service.EntityService;
-import org.autocs.core.model.Broker;
+import org.autocs.core.model.BrokerModel;
 import org.autocs.core.model.Provider;
 import org.autocs.core.model.Scenario;
 
@@ -34,7 +34,7 @@ public class ScenarioSerializer extends StdSerializer<Scenario> {
     private EntityService<Provider> providerService;
 
     @Autowired
-    private EntityService<Broker> brokerService;
+    private EntityService<BrokerModel> brokerService;
 
     public ScenarioSerializer() {
         super(Scenario.class);
