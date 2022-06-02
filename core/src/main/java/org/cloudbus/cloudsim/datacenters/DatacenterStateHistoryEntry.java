@@ -14,7 +14,7 @@ package org.cloudbus.cloudsim.datacenters;
  * datacenter.
  *
  * @author Ibrahem Mouhamad
- * @since AutoCS, Simulator Package 1.0.0
+ * @since AutoCS Core Package 1.0.0
  * @param time           the time the data in this history entry is related to
  * @param allocatedMips  the total MIPS allocated from all PEs of all hosts, t
  *                       running VMs, at the recorded time

@@ -50,7 +50,7 @@ import static org.cloudbus.cloudsim.util.BytesConversion.bitesToBytes;
  * @author Rodrigo N. Calheiros
  * @author Anton Beloglazov
  * @author Ibrahem Mouhamad
- * @since AutoCS, Simulator Package 1.0.0
+ * @since AutoCS Core Package 1.0.0
  */
 public class DatacenterSimple extends CloudSimEntity implements Datacenter {
 
@@ -1300,6 +1300,9 @@ public class DatacenterSimple extends CloudSimEntity implements Datacenter {
             final DatacenterStateHistoryEntry previousState = stateHistory.get(stateHistory.size() - 1);
             if (previousState.time() == time) {
                 stateHistory.set(stateHistory.size() - 1, newState);
+                return;
+            }
+            if (time - previousState.time() < 10) {
                 return;
             }
         }

@@ -5,6 +5,20 @@
     "version": "1.0.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch PowerAwareRuleBasedHorizontalVmScalingExperimentRunner",
+            "request": "launch",
+            "mainClass": "org.autocs.sdn.examples.autoscaling.PowerAwareRuleBasedHorizontalVmScalingExperimentRunner",
+            "projectName": "core"
+        },
+        {
+            "type": "java",
+            "name": "Launch NetworkVmsExampleWorkflowApp",
+            "request": "launch",
+            "mainClass": "org.autocs.sdn.examples.applications.NetworkVmsExampleWorkflowApp",
+            "projectName": "core"
+        },
+        {
             "name": "server: engine",
             "type": "java",
             "request": "launch",

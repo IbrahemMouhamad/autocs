@@ -56,9 +56,9 @@ const LinesChart = ({
             legendOffset: -60,
             legendPosition: 'middle',
         }}
-        pointSize={7}
+        pointSize={1}
         pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
+        pointBorderWidth={1}
         pointBorderColor={{ from: 'serieColor' }}
         pointLabelYOffset={-12}
         useMesh

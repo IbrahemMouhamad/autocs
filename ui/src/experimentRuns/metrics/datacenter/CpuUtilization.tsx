@@ -4,13 +4,13 @@
 
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import DownloadIcon from '@mui/icons-material/Download';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { useTranslate } from 'react-admin';
 
 import { LinesChart, ChartContainer } from '../../../common';
 import {
     groupHistoryByLabels,
-    calculateTimeToCpuPercentageSerie,
     getMaxChartValue,
     getMinChartValue,
 } from '../metricUtils';
@@ -23,11 +23,12 @@ const CpuResourceAllocation = ({ data }): JSX.Element => {
     return (
         <ChartContainer
             headingText='label.run.metrics.cpu.resource_title'
+            icon={FileUploadIcon}
         >
             <LinesChart
                 data={data}
                 xLegend={`${translate('label.run.metrics.time')} (${translate('label.run.metrics.time_unit')})`}
-                yLegend={`${translate('label.run.metrics.cpu.mips_label')} (${translate('label.run.metrics.cpu.mips_unit')})`}
+                yLegend={`${translate('label.run.metrics.cpu.percentage')}`}
                 yMax={yMax}
                 yMin={yMin}
             />
@@ -43,12 +44,12 @@ const CpuUsagePercentage = ({ data }): JSX.Element => {
     return (
         <ChartContainer
             headingText='label.run.metrics.cpu.usage_title'
-            icon={DeveloperBoardIcon}
+            icon={DownloadIcon}
         >
             <LinesChart
                 data={data}
                 xLegend={`${translate('label.run.metrics.time')} (${translate('label.run.metrics.time_unit')})`}
-                yLegend={`${translate('label.run.metrics.cpu.percentage')} (${translate('label.run.metrics.cpu.percentage_unit')})`}
+                yLegend={`${translate('label.run.metrics.cpu.percentage')}`}
                 yMax={yMax}
                 yMin={yMin}
             />
@@ -58,28 +59,30 @@ const CpuUsagePercentage = ({ data }): JSX.Element => {
 
 const CpuUtilization = ({ data }): JSX.Element | null => {
     const translate = useTranslate();
-    const groupedData = groupHistoryByLabels(
+    const upload = groupHistoryByLabels(
         data,
         'time',
-        ['allocatedMips', 'requestedMips'],
+        ['allocatedMips'], // upload --allocatedMips , download requestedMips
         {
             allocatedMips: `${translate('label.run.metrics.cpu.allocated')} ${translate('label.run.metrics.cpu.mips_unit')}`,
-            requestedMips: `${translate('label.run.metrics.cpu.requested')} ${translate('label.run.metrics.cpu.mips_unit')}`,
         },
     );
-    const cpuPercentage = calculateTimeToCpuPercentageSerie(
+    const download = groupHistoryByLabels(
         data,
         'time',
-        translate('label.run.metrics.cpu.percentage'),
+        ['requestedMips'], // upload --allocatedMips , download requestedMips
+        {
+            requestedMips: `${translate('label.run.metrics.cpu.requested')} ${translate('label.run.metrics.cpu.mips_unit')}`,
+        },
     );
 
     return (
         <Grid container>
             <Grid item md={6} sm={12} xs={12}>
-                <CpuUsagePercentage data={[cpuPercentage]} />
+                <CpuUsagePercentage data={download} />
             </Grid>
             <Grid item md={6} sm={12} xs={12}>
-                <CpuResourceAllocation data={groupedData} />
+                <CpuResourceAllocation data={upload} />
             </Grid>
         </Grid>
     );

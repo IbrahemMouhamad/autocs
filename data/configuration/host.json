@@ -73,6 +73,18 @@
             "type": "int",
             "defaultValue": 10000,
             "required": true
+        },
+        "idlepower": {
+            "description": "The storage capacity in Megabytes",
+            "type": "int",
+            "defaultValue": 32,
+            "required": true
+        },
+        "maxPower": {
+            "description": "The storage capacity in Megabytes",
+            "type": "int",
+            "defaultValue": 50,
+            "required": true
         }
     }
 }

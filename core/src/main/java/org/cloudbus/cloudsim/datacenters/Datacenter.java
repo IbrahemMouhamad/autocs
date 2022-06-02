@@ -37,7 +37,7 @@ import java.util.stream.Stream;
  * @author Anton Beloglazov
  * @author Manoel Campos da Silva Filho
  * @author Ibrahem Mouhamad
- * @since AutoCS, Simulator Package 1.0.0
+ * @since AutoCS Core Package 1.0.0
  */
 public interface Datacenter extends SimEntity, PowerAware<PowerModelDatacenter>, TimeZoned, Sizeable {
     Logger LOGGER = LoggerFactory.getLogger(Datacenter.class.getSimpleName());
